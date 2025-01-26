@@ -1,0 +1,986 @@
+United States: False
+Great Britain: False
+France: False
+Italy: False
+Germany: False
+Australia: False
+Japan: False
+Canada: False
+Hungary: False
+Sweden: False
+Netherlands: False
+Spain: False
+China: False
+Poland: False
+Brazil: False
+Soviet Union: True
+Switzerland: False
+Russia: True
+South Korea: False
+Belgium: False
+Romania: False
+Denmark: False
+Finland: True
+Czechoslovakia: True
+Austria: False
+Argentina: False
+Greece: False
+Mexico: False
+Bulgaria: False
+New Zealand: False
+Norway: False
+Cuba: False
+Ukraine: False
+West Germany: True
+South Africa: False
+East Germany: True
+Yugoslavia: True
+Egypt: False
+Ireland: False
+Portugal: False
+India: False
+Belarus: True
+Turkey: False
+Chinese Taipei: False
+Colombia: False
+Czech Republic: False
+Kazakhstan: False
+Venezuela: True
+Puerto Rico: False
+Nigeria: True
+Israel: False
+Luxembourg: True
+Croatia: False
+Chile: False
+Jamaica: False
+Thailand: False
+Kenya: False
+Unified Team: True
+Iran: False
+Philippines: False
+Uzbekistan: False
+Morocco: False
+Slovenia: False
+Lithuania: False
+Algeria: False
+Tunisia: False
+Slovakia: False
+Malaysia: False
+Hong Kong: False
+Peru: False
+North Korea: False
+Uruguay: True
+Serbia: False
+Latvia: True
+Mongolia: False
+Pakistan: False
+Estonia: True
+Indonesia: False
+Guatemala: False
+Azerbaijan: False
+Singapore: False
+Iceland: True
+Dominican Republic: False
+Trinidad and Tobago: True
+Ecuador: False
+Senegal: True
+Ethiopia: False
+Georgia: False
+Bahamas: True
+Zimbabwe: True
+Ghana: True
+Cameroon: True
+Angola: True
+Uganda: False
+Kyrgyzstan: False
+Fiji: False
+Serbia and Montenegro: True
+Lebanon: True
+Costa Rica: True
+El Salvador: True
+Kuwait: True
+Korea: True
+Zambia: False
+Iraq: True
+Cyprus: False
+Vietnam: True
+Moldova: False
+Saudi Arabia: True
+United States Virgin Islands: True
+Armenia: False
+Barbados: True
+Qatar: False
+Syria: True
+Honduras: True
+Cote d'Ivoire: True
+Mauritius: True
+Bermuda: True
+Sri Lanka: True
+Panama: False
+Türkiye: True
+Paraguay: True
+Czechia: True
+Bahrain: False
+San Marino: True
+Nicaragua: True
+Monaco: True
+Bohemia: True
+Bolivia: True
+Tanzania: True
+Seychelles: True
+Madagascar: True
+Papua New Guinea: True
+Guam: True
+United Arab Emirates: True
+Antigua and Barbuda: True
+Afghanistan: True
+Haiti: True
+Jordan: False
+Malta: True
+Montenegro: True
+Liechtenstein: True
+Mali: True
+Individual Olympic Athletes: True
+Samoa: True
+Sudan: True
+Botswana: False
+Guinea: True
+Sierra Leone: True
+Myanmar: True
+Nepal: True
+Guyana: True
+United Arab Republic: True
+Hong Kong, China: True
+Mozambique: True
+Libya: True
+Saar: True
+Cayman Islands: True
+Congo (Brazzaville): True
+Benin: True
+Congo (Kinshasa): True
+Malawi: True
+Namibia: True
+Bosnia and Herzegovina: True
+Tajikistan: False
+Albania: False
+Netherlands Antilles: True
+Turkmenistan: True
+Belize: True
+Gabon: True
+Cambodia: True
+Liberia: True
+Suriname: True
+Grenada: False
+Swaziland: True
+Central African Republic: True
+Australasia: True
+Burkina Faso: True
+Bangladesh: True
+Togo: True
+Niger: True
+Rwanda: True
+Oman: True
+Laos: True
+Andorra: True
+Macedonia: True
+Lesotho: True
+Eritrea: True
+South Vietnam: True
+Aruba: True
+Tonga: True
+Gambia: True
+EOR: True
+IR Iran: True
+Cook Islands: True
+Burundi: True
+Maldives: True
+AIN: True
+Vanuatu: True
+American Samoa: True
+Yemen: True
+Djibouti: True
+Equatorial Guinea: True
+Saint Vincent and the Grenadines: True
+British Virgin Islands: True
+Saint Lucia: False
+Chad: True
+Palestine: True
+Refugee Olympic Team: False
+Bhutan: True
+Republic of Moldova: True
+Solomon Islands: True
+Saint Kitts and Nevis: True
+Malaya: True
+Mauritania: True
+Palau: True
+Kosovo: False
+England: True
+Comoros: True
+Somalia: True
+Dominica: False
+Federated States of Micronesia: True
+Cape Verde: True
+Royal Club Nautique de Gand: True
+Ivory Coast: False
+Socit Nautique de Bayonne: True
+Scotland: True
+DPR Korea: True
+Guinea Bissau: True
+Phalainis ton Thorichtou "Hydra": True
+Marshall Islands: True
+West Indies Federation: True
+Kiribati: True
+Union des Socits Franais de Sports Athletiques: True
+Toronto Argonauts: True
+North Macedonia: True
+South Sudan: True
+Sao Tome and Principe: True
+UA Emirates: True
+Nauru: True
+Côte d'Ivoire: True
+Marinai della nave da guerra "Varese": True
+Refugee Olympic Athletes: True
+North Yemen: True
+Chicago Athletic Association: True
+New York Athletic Club: True
+Vesper Boat Club: True
+Brunei: True
+Rhodesia: True
+Tuvalu: True
+Lemzos Thorichton "Psara": True
+Kristiania Roklub: True
+Roddklubben af 1912: True
+Cornwall: True
+Pan: True
+Minerva Amsterdam: True
+Leander Club: True
+Socit Nautique de la Basse Seine: True
+Frankfurt Club: True
+Ali: True
+USFSA: True
+Christian Brothers' College: True
+Large boat, Central Naval Prep School "Poros": True
+Lemzos Thorichton "Spetsai": True
+Cambridge University Boat Club: True
+Societ Nautique de la Marne: True
+Dansk Idrts Forbund: True
+Panhellenios Gymnastikos Syllogos: True
+Quand: True
+Angelita: True
+Libellule de Paris: True
+Thessalonki: True
+Athens: True
+Smyrna: True
+Pistoja/Firenze: True
+Wales: True
+Democratic Republic of the Congo: True
+Eswatini: True
+Cabo Verde: False
+Gteborgs Roddklubb: True
+Berliner Ruderverein von 1876: True
+Pannonia RC/National RC: True
+Sydney Rowing Club: True
+Moseley Wanderers: True
+Crabe II: True
+Nina Claire: True
+Erna Signe: True
+Gitana: True
+Djinn: True
+Timor Leste: True
+Racing Club de France: True
+Crete: True
+St. Rose: True
+Upton Park FC: True
+Galt Football Club: True
+United States Golf Association: True
+Roma: True
+La Salle Turnverein, Chicago: True
+New York Turnverein, New York: True
+Philadelphia Turngemeinde, Philadelphia: True
+Winnipeg Shamrocks: True
+DR Congo: True
+Bosnia & Herzegovina: True
+Norwegian Rowing Association: True
+Favorite Hammonia: True
+Bucintoro Venezia: True
+Aschenbrodel: True
+Magda IX: True
+Atlanta: True
+Olle: True
+Gwendoline: True
+Favorite: True
+Mascotte: True
+Llanoria: True
+Matrero II: True
+Antwerpia V: True
+Tritons Lillois: True
+Missouri Athletic Club: True
+Cincinnati Archers: True
+South Yemen: True
+Devon and Somerset Wanderers: True
+Univ. of Brussels: True
+Trans: True
+Western Golf Association: True
+Concordia Turnverein, St Louis: True
+Turnverein Vorwrts, Chicago: True
+Socialer Turnverein, Detroit: True
+St. Louis Amateur Athletic Association: True
+The Gambia: True
+Virgin Islands, US: True
+Virgin Islands: True
+São Tomé and Príncipe: True
+Hungaria Evezos Egylet: True
+Berliner Ruderclub Sport: True
+Germania Ruder Club, Hamburg: True
+Nautikos Omilos: True
+Cercle de l'Aviron Roubaix: True
+Ludwigshafener Ruder Verein: True
+Omilos Ereton Smyrnis: True
+Argonaut Rowing Club: True
+Sarcelle: True
+Scotia: True
+Scamasaxe: True
+C.V.A.: True
+Martha: True
+Lerina: True
+Amulet: True
+Marga: True
+Kitty: True
+Hera: True
+Mouchette: True
+DeRuyter: True
+May Be VII: True
+Qu'Importe: True
+Italia: True
+Saskia: True
+Santa Maria: True
+Ilderim: True
+Lyn: True
+Pampero: True
+Denmark/Sweden: True
+St. Louis Southwest Turnverein #1: True
+K Division Metropolitan Police Team: True
+Boer Team: True
+Potomac Archers: True
+Passaic Turnverein, Passaic: True
+Turnverein Vorwrts, Cleveland: True
+South St Louis Turnverein, St Louis: True
+Lao PDR: True
+Mohawk Indians: True
+Timor: True
+Virgin Islands, B: True
+Centr Afric Re: True
+Congo: True
+StVincent&Grenadines: True
+Gyrinus: True
+Foxhunters Hurlingham: True
+New College, Oxford: True
+Club Nautique de Lyon: True
+Polyteknisk Roklub: True
+R.: True
+Vaxholm Roddklubb: True
+Magdalen College Boat Club: True
+Century Boat Club: True
+Western Rowing Club: True
+Sidi: True
+Mamie: True
+Mosk II: True
+Gallia II: True
+Boreas: True
+Heira II: True
+Singy: True
+Twins VIII: True
+John B: True
+Subbnboana: True
+Lalage: True
+Hungaria: True
+LaBandera: True
+Esperia: True
+Tutti V: True
+Ylliam II: True
+Ubu: True
+Aloha II: True
+Raili: True
+Ralia: True
+Lully II: True
+Frieda: True
+Titia: True
+Taifun: True
+Lucky Girl: True
+Feo: True
+Emily: True
+K.S.S.S. 1912: True
+Vinga: True
+Sans Atout: True
+Dolfijn: True
+Vinha: True
+Joy: True
+Rika II: True
+New York Athletic Club #1: True
+Liverpool Police Team: True
+Osborne Swimming Club, Manchester: True
+Brussels Swimming and Water Polo Club: True
+Pupilles de Neptune de Lille #1: True
+Amateur Athletic Association: True
+Lucky Star: True
+Davenport Turngemeinde, Davenport: True
+Norwegier Turnverein, Brooklyn: True
+Central Turnverein, Chicago: True
+Sao Tome & Principe: True
+St Kitts and Nevis: True
+Micronesia: True
+Brunei Darussalam: True
+East Timor: True
+Republic of the Congo: True
+Compigne Polo Club: True
+Life boat naval ship "Spetsai": True
+Phalainis ton Thorichtou "Psara": True
+Club Nautique de Dieppe: True
+Club Nautique de Franais: True
+Peiraikos Syndesmos: True
+Ormsund Roklub: True
+Gteborgs Roddfrening: True
+Helsingfors R. K.: True
+Barion/Bari: True
+Atalanta Boat Club: True
+Baby: True
+Fantlet: True
+Pierre et Jean: True
+Crabe I: True
+Galopin: True
+Crocodile: True
+Ducky: True
+Nina: True
+Eleda: True
+Heatherbell: True
+Frimousse: True
+Turquoise: True
+Elsie: True
+Mirtala: True
+Snowten III: True
+Complex II: True
+Tim: True
+Unique: True
+Viking: True
+Viktoriya: True
+Roy: True
+Minotaur: True
+Rush V: True
+Grifone: True
+Elisabeth X: True
+Ciocca II: True
+Caprice: True
+Jo: True
+Willem: True
+Ylliam VIII: True
+Gustel V: True
+Hatuey: True
+Morena: True
+Ylliam VII: True
+Dormy: True
+Fruits: True
+Bonzo: True
+May Be: True
+Marmi II: True
+Apache: True
+Freja: True
+Ingegerd: True
+Johan: True
+Nurdug II: True
+Tan: True
+Sibindi: True
+Mebi: True
+Hi: True
+Danuta: True
+Heroine: True
+Ancora: True
+rn: True
+Fram: True
+Anitra: True
+Germania II: True
+Namoussa: True
+Bamba: True
+Cobweb: True
+Babe: True
+Silja: True
+Irene: True
+Sorais: True
+Sildra: True
+Noreg: True
+Norman: True
+Tornado: True
+Bluebottle: True
+Aletta: True
+Snude: True
+Tango: True
+Argus: True
+Paula: True
+June Climene: True
+Red Dragon: True
+Akatonbo: True
+Rififi: True
+Canopus: True
+Virginie: True
+Spirit III: True
+Pam: True
+Miss Nippon V: True
+Alcaid: True
+Pan II: True
+Kalayaan: True
+Bim: True
+Beaver: True
+Daisy: True
+Lotta IV: True
+Bem II: True
+Merope III: True
+Deutscher Schwimm Verband Berlin: True
+United States/Great Britain: True
+Milwaukee Athletic Club: True
+St. Louis Southwest Turnverein #2: True
+Omas Helliniki P. S.: True
+Pupilles de Neptune de Lille #2: True
+Unknown: True
+Ethnikos Gymnastikos Syllogos: True
+Dylan: True
+BLO Polo Club, Rugby: True
+Hurlingham: True
+Bagatelle Polo Club, Paris: True
+A North American Team: True
+Roehampton: True
+Ral: True
+Nykjbings paa Falster: True
+Ludwigshafener Ruderverein: True
+Thames Rowing Club: True
+Studenternes Roklub: True
+Roklubb Kbnhavn: True
+Rowing Club Castillon: True
+Cercle Nautique de Reims: True
+Stade Franais AC: True
+Mound City Rowing Club: True
+Amstel Amsterdam: True
+Berliner Ruderclub: True
+Leander Club #2: True
+Seawanhaka Boat Club: True
+Leander Club #1: True
+Ravenswood Boat Club: True
+Independent Rowing Club: True
+Plume: True
+Souriceau: True
+Carabinier: True
+Hb: True
+Colette: True
+Suzon IV: True
+Demi: True
+Verveine: True
+Ariette: True
+Alcyon: True
+Freia: True
+Esterel: True
+Beatrijs III: True
+Brat: True
+Mignon: True
+Femur: True
+Bona Fide: True
+Mascaret: True
+Gyp: True
+Pirouette: True
+Marsouin: True
+Kullan: True
+Sif: True
+Yeoman VII: True
+Druzhba: True
+Damoiselle: True
+Bronia: True
+Bingo: True
+Sjhxa: True
+Ciocca III: True
+Shoveller: True
+Posillipo III: True
+Tom Kyle: True
+Tilly: True
+Buraddoo: True
+Rush IV: True
+Gilliatt V: True
+Teresita: True
+Jill: True
+Bermudes: True
+Encore: True
+Fram III: True
+Alain IV: True
+Yeoman V: True
+Rush VII: True
+State VI: True
+Barrenjoey: True
+Voloira II: True
+Hojwa: True
+Ardilla: True
+Stella: True
+Cupidon Viking: True
+Guyoni: True
+Kerstin: True
+Wiking: True
+Edelweiss II: True
+Ciocca: True
+Elisabeth V: True
+Nirwana: True
+Kemphaan: True
+Zut: True
+Lynn: True
+Mac Miche: True
+Oranje: True
+Rose Pompon: True
+Bylina: True
+Blue Red: True
+EA II: True
+Bera: True
+Cupidon III: True
+L'Aile VI: True
+Hollandia: True
+Sheerio: True
+Sylvia: True
+Mutafo: True
+Olen: True
+Lett: True
+Tip: True
+Linglom: True
+Snap: True
+Sabre: True
+Grifo III: True
+Damoiselle IV: True
+Dinah V: True
+White Lady: True
+Ausonia: True
+Chok: True
+Slaghoken II: True
+Serendipity: True
+Gabbiano: True
+Ceres II: True
+Galatea II: True
+Allegro: True
+Venilia: True
+Cambria: True
+Oleander XII: True
+Phoenix: True
+Galejan: True
+Girl Pat: True
+Aphrodite: True
+Trintel II: True
+Rhythm: True
+Proteus II: True
+Tu: True
+Argeste: True
+Korshun: True
+Aretusa: True
+Salamander: True
+Kuling: True
+Skidoo: True
+Tomahawk II: True
+Escapade: True
+Barco Deloro: True
+Spirit VI: True
+Argo II: True
+Neptun II: True
+Persey: True
+Gustel X: True
+Gustl XI: True
+Astrid III: True
+Evita VI: True
+Circus: True
+Widgeon: True
+Nikh: True
+Calcinhas: True
+Pigoule: True
+Peri II: True
+Fantasio III: True
+Romolo: True
+Aldebaran II: True
+Kingfisher: True
+Kon: True
+Calypse II: True
+Terrible: True
+Diablo: True
+Meteor: True
+Mad Dog: True
+Bermudian: True
+Impala: True
+Brigantia: True
+Miss Denmark 1964: True
+Tantalus: True
+Tlaloc: True
+Three Leaves: True
+Syndi: True
+Vento Sul: True
+Macky VI: True
+Tengiri: True
+Olympion: True
+Riccar: True
+Lady C: True
+Tineke: True
+Falcon VI: True
+Nokaut II: True
+Harmony: True
+Falcon IV: True
+Sjovinge: True
+Clementine V: True
+The Cloud: True
+GyoshuII: True
+Swedish Star: True
+Fortuna: True
+Primorka: True
+Symphony: True
+Faneca: True
+Nora: True
+Tichiboo: True
+Siames: True
+Nortazo: True
+Wannsee: True
+Buscape II: True
+Swift: True
+Nausikaa 4: True
+Arcturus: True
+Covunco III: True
+Scram: True
+Espuma del Mar: True
+Mari: True
+Eissero VI: True
+KNS: True
+Uragan: True
+Gem: True
+Kurush IV: True
+Vesania: True
+Kurush II: True
+Vicking: True
+Pegaso: True
+Fada: True
+St. Margrite: True
+Frip IV: True
+Naiad: True
+Gem II: True
+Gem IV: True
+Moorina: True
+30. Februar: True
+Mizar: True
+Freddy: True
+Springbok: True
+Jupiter: True
+Paka: True
+Pasodoble: True
+Shrew II: True
+Hornet: True
+Chance: True
+Tramontane: True
+Olimpia: True
+Sunshine: True
+Red Indian: True
+Holland: True
+Zefyros: True
+Three Star Too: True
+Bellatrix IX: True
+Twinkle: True
+Pimm: True
+Donar III: True
+Maryke: True
+Rampage: True
+Humbug V: True
+Margaret: True
+Ma'Lindo: True
+Marie: True
+Legionario: True
+Enotria: True
+Danaldo: True
+Windor: True
+Glider: True
+Squid III: True
+Pupilles de Neptune de Lille: True
+New York Athletic Club #2: True
+Great Britain/Germany: True
+Australia/Great Britain: True
+Germany/United States: True
+France/Great Britain: True
+Bohemia/Great Britain: True
+London City Police: True
+Chicago Archers: True
+Boston Archers: True
+Newfoundland: True
+North Borneo: True
+Mistral Hojris: True
+Relampago: True
+Whitini Star: True
+Briar: True
+Gran Gesto: True
+Elvis Va: True
+Calimucho: True
+Oxalis: True
+Don Schufro: True
+Lancet: True
+Whisper: True
+Clearwater: True
+Bonaparte: True
+Mythilus: True
+Rambo: True
+Floresco: True
+Brentina: True
+Nadine: True
+Pop Art: True
+Quando Quando: True
+Diabolo St Maurice: True
+Ravel: True
+Notavel: True
+Galopin De La Font: True
+Orion: True
+Greenoaks Dundee: True
+Sunrise: True
+Salinero: True
+Satchmo: True
+Solos Carex: True
+Dow Jones: True
+Digby: True
+Milwaukee Turnverein, Milwaukee: True
+Wolseley: True
+Camille: True
+Quicksilver: True
+Sea Dog: True
+Omilos Ereton Peiraios: True
+Giselle: True
+Pettit: True
+Tornade: True
+Cinara: True
+Dick: True
+Jeannette: True
+Rozenn: True
+Laurea: True
+Nan: True
+Brynhild: True
+Souvenance: True
+Cicely: True
+Formosa: True
+Xolotl: True
+Yeoman XII: True
+Burevestnik: True
+Web II: True
+Web III: True
+Vision: True
+SagaII: True
+Ballerina IV: True
+Inga: True
+Chaje II: True
+Struten: True
+Gullvinge: True
+Yeoman: True
+Surprise: True
+Lasha: True
+Mystery: True
+Bissbi: True
+Amolgavar: True
+Norna: True
+Gallant: True
+Suzy: True
+Camelia: True
+Trickson VI: True
+Twins II: True
+Sonja II: True
+Finn II: True
+Sass: True
+Sandra: True
+Ciss: True
+Fornebo: True
+Saga: True
+Breslau: True
+Konstanz: True
+Kiel: True
+Dresden: True
+Augsburg: True
+Essen: True
+Knigsberg: True
+Lbeck: True
+Angerburg: True
+Nrnberg: True
+Rostock: True
+Heidelberg: True
+Leipzig: True
+Hannover: True
+Bremen: True
+Kln: True
+Potsdam: True
+Hamburg: True
+Cuxhaven: True
+Danzig: True
+Brandenburg: True
+Mainz: True
+Tournade: True
+Sidi Fekkar: True
+Jeanette: True
+Grifo IV: True
+Monica: True
+Slaghoken: True
+Baccara: True
+Partenope: True
+Acipactli: True
+Thalatta: True
+Guanahani: True
+Nirefs: True
+Oleander II: True
+Xantippa: True
+Bajazzo: True
+Patricia: True
+Jet: True
+Andromeda: True
+Miss Nippon IV: True
+Tajamar: True
+Firebird II: True
+Inca: True
+Sirene: True
+Peri: True
+Chuckles: True
+Pousse: True
+Aldebaran: True
+Yangon: True
+Jest: True
+Kannibaltje: True
+Skum: True
+Balaton: True
+Hayama: True
+Lucky: True
+Combine: True
+Wendehals: True
+Pandora: True
+Almaz: True
+Maid of Lebanon: True
+Vim III: True
+Hakahana: True
+Galerna: True
+Hirondelle: True
+Starlight III: True
+Marmara: True
+Andorinha: True
+Chamukina: True
+Acturus: True
+Gam II: True
+Antares: True
+Umberta V: True
+Espadarte: True
+Bu III: True
+Pakaria: True
+Bella: True
+May: True
+Cha: True
+Ariel: True
+Gem III: True
+Gem VII: True
+Paka V: True
+Espardate: True
+Whirlaway: True
+MitaII: True
+Nephos I: True
+Kathleen: True
+Starita: True
+Bellatrix XIII: True
+Glisten: True
+Myojo: True
+Manana: True
+Tulilind: True
+Comanche: True
+Merope: True
+Scaup: True
+Hilarius: True
+United States/France: True
