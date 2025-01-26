@@ -34,11 +34,11 @@ if col1_max == col1_min or col2_max == col2_min:
 
 for i in range(data.shape[0]):
     for j in range(data.shape[1]):
-        if j % 2 == 1:
+        if j % 2 ==1:
             normalized[i, j] = (pdf_values[i, j] - col1_min) / (col1_max - col1_min + 1e-5)
         elif j % 2 == 0:
             normalized[i, j] = (pdf_values[i, j] - col2_min) / (col2_max - col2_min + 1e-5)
-
+print("the data after positive transformation is:",normalized)
 X = normalized
 
 
@@ -61,6 +61,13 @@ if np.sum(d_j) == 0:
 
 w = d_j / np.sum(d_j)
 
-print("the weights of these two methods are",w)
+print("the weight of each method is :", w)
 
+medal_earn=np.zeros_like(normalized)
+
+for i in range(data.shape[0]):
+    for j in range(data.shape[1]):
+        #print(medal_earn)
+        medal_earn[i,j]+=data[i,j]*w[j]
+print("the final result about the medal earned of each country in 2028 Olynpic game is: ", medal_earn)
 
