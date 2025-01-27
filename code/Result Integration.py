@@ -2,7 +2,7 @@ import numpy as np
 from scipy.stats import gamma
 
 try:
-    data = np.loadtxt('mcm_test.csv', delimiter=',')
+    data = np.loadtxt('Test.csv', delimiter=',')
 except FileNotFoundError:
     raise FileNotFoundError("The file 'data.csv' was not found.")
 except ValueError:
@@ -14,6 +14,12 @@ normalized = np.zeros_like(data)
 
 col1_min, col1_max = np.inf, -np.inf
 col2_min, col2_max = np.inf, -np.inf
+
+for i in range(data.shape[0]):
+    for j in range(data.shape[1]):
+        if data[i, j] == 0:
+            data[i, j] =data[i, j]+0.000001
+
 
 
 for i in range(data.shape[0]):
@@ -64,10 +70,14 @@ w = d_j / np.sum(d_j)
 print("the weight of each method is :", w)
 
 medal_earn=np.zeros_like(normalized)
+print("the data table is:", data)
 
 for i in range(data.shape[0]):
     for j in range(data.shape[1]):
         #print(medal_earn)
         medal_earn[i,j]+=data[i,j]*w[j]
-print("the final result about the medal earned of each country in 2028 Olynpic game is: ", medal_earn)
+
+results = np.sum(medal_earn, axis=1).reshape(-1, 1)
+
+print("the final result about the medal earned of each country in 2028 Olynpic game is: ", results)
 
