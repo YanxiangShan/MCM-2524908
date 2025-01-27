@@ -33,13 +33,14 @@
   %\usepackage{txfonts}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{tabularx}
 \graphicspath{ {./figures/} }
 \usepackage{indentfirst}  %首行缩进，注释掉，首行就不再缩进。
 \usepackage{lipsum}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=4cm, minimum height=1cm, text centered, draw=black, fill=red!30]
-\tikzstyle{process} = [rectangle, minimum width=4cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{startstop} = [rectangle, rounded corners, text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, text centered, draw=black, fill=blue!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \title{MCM Problem C}
 \author{\small \href{https://www.latexstudio.net/}
@@ -91,22 +92,30 @@ As the Games approach, attention is increasingly focused on the potential medal 
 This paper explores these dynamics within the unique context of the Los Angeles Games, including its innovative event lineup, the past performances of each country and the composition of each national team.
 
 \subsection{Framework of Analysis}
-In this paper, we established multiple models to predict the medals earned of each country in the 2028 Olympic Games held in Los Angeles. The first model we take is the artificial neural network (ANN). The neural network program is constructed using Python and trained by the database provided by the organizer of this competition. The database we used included data about the names of athletes, the hosting country, the medals awarded, and the hosting year from 1896 to 2024 of each country. The other model we take is multiple linear regression (MLR). In this model, we find the linear relationships between the variables in the database and the medals earned of each country. To find the synthetic results from these two outcomes of different methods, we take the entropy-weight method (EWM) to calculate the weight between the data from each method. Eventually, we will take the weighted average value to obtain the final result.  
+In this paper, we established multiple models to predict the medals earned of each country in the 2028 Olympic Games held in Los Angeles. The first model we take is the artificial neural network (ANN). The neural network program is constructed using Python and trained with the databases provided by the organizer of this competition. The databases we used included data about the names of athletes and the countries they represent, the hosting country, the medals awarded, and the hosting year from 1896 to 2024 of each country. The other model we take is multiple linear regression (MLR). In this model, we find the linear relationships between the variables in the database and the medals earned of each country. To find the synthetic results from these two outcomes of different methods, we take the entropy-weight method (EWM) to calculate the weight between the data from each method. Eventually, we will take the weighted average value to obtain the final result.  
 
 \subsection{Comments on Data Provided}
 There have been many inconsistencies we observed in the provided data, many of which were not addressed in the problem statement. Nonetheless, we have found ways to circumvent these errors to create working models regardless. First, we must address the issue of the 1906 Summer Olympics. While running tests on the multidimensional regression model we found an error in which the model handled one specific date, namely the 1906 Olympics. After closer reading, it came to out attention that the 1906 Olympics did not follow the standard 4 year gap between events. This was cumbersome because this information was only stored in the athletes data file, and not mentioned in neither the medal count file nor the host file. This deleted crucial information on which the regression model bases its predictions on. We have elected not to include those Olympics in the regression model, due to the stipulation not to use any external data (i.e. data from sources others than the ones provided). It had been included, however, in the neural network model, as there need not be for extremely precise definitions compared to the regression model; however, this might be contributing to some amount of error (formally called \textit{loss} in machine learning environments).
-We have also found errors in the files themselves. There are certain characters at the end of some team names that inhibit complete data analysis on the unmodified provided files. These include, but are not limited to, the characters "¬†" being concatenated to the end of country names in the \texttt{medal\_counts.csv} file for the 1932 and 1960 Olympics, the existence of "subteams" like Japan-1 or United States-13, or the aforementioned lack of host data for the special 1906 Summer Olympics. Although it is difficult to predict what influence these errors have on the neural network model, we found ways to circumvent these issues when working with the regression model. 
+We have also found errors in the files themselves. There are certain characters at the end of some team names that inhibit complete data analysis on the unmodified provided files. These include, but are not limited to, the characters "¬†" being concatenated to the end of country names in the \texttt{medal\_counts.csv} file for the 1932 and 1960 Olympics, the existence of "subteams" like Japan-1 or United States-13, or the aforementioned lack of host data for the special 1906 Summer Olympics. Although it is difficult to predict what influence these errors had on the neural network model, we found ways to circumvent these issues when working with the regression model. 
 
 \section{Analysis of the Problem}
 
 \subsection{The Artificial Neural Network}
-The artificial neural network was coded in Python 3.12.0, with the help of standard machine learning (ML) and data analysis libraries: \href{https://pandas.pydata.org/}{\texttt{Pandas}}, \href{https://numpy.org/}{\texttt{NumPy}}, \href{https://scikit-learn.org/stable/}{\texttt{scikit-learn}} and \href{https://www.tensorflow.org/}{\texttt{TensorFlow}}. The raw code may be found in Appendix X. The Artificial Neural Network (henceforth abbreviated as ANN) was trained on three of the four provided files: \texttt{summerOly\_atheletes.csv}, \texttt{summerOly\_hosts.csv}, \\ \texttt{summerOly\_medal\_counts.csv}. The ANN was designed with three layers, the input layer (with 32 neurons), the middle layer (with 16 neurons) and the output layer (with 1 neuron). After each training iteration, the ANN prunes (omits) random neurons (20\% for this ANN) and connections to prevent overfitting and force the ANN to learn the patterns visible in the training data. This is done to prevent the ANN from depending on any specific neuron, which is common in smaller ANN's (like the one created for this paper) or with a relatively small amount of training data (also the case in this problem). The data followed the standard 90/10 split, whereby 90\% of the data was used to train the model, and 10\% to test the models accuracy. Rectified Linear Unit (ReLU) was chosen as the activation function for the first 2 ANN layers, due to the many benefits it provides over other functions like Sigmoid, which tend to slow the model down during backpropagation, since it confines all inputs into the range $[0, 1]$. For very large or small input values, the gradient is disproportionally closer to 0, which significantly slows down the updating of weights between neurons. Although many slightly different variations of the ReLU function exist, the ANN used the function defined as $x\mapsto \max(0, x)$.
+The artificial neural network was coded in Python 3.12.0, with the help of standard machine learning (ML) and data analysis libraries: \href{https://pandas.pydata.org/}{\texttt{Pandas}}, \href{https://numpy.org/}{\texttt{NumPy}}, \href{https://scikit-learn.org/stable/}{\texttt{scikit-learn}} and \href{https://www.tensorflow.org/}{\texttt{TensorFlow}}. The raw code may be found in Appendix A after following the github link. The Artificial Neural Network (henceforth abbreviated as ANN) was trained on three of the four provided files: \texttt{summerOly\_atheletes.csv}, \texttt{summerOly\_hosts.csv}, \\ \texttt{summerOly\_medal\_counts.csv}. The ANN was designed with three layers, the input layer (with 32 neurons), the middle layer (with 16 neurons) and the output layer (with 1 neuron). After each training iteration, the ANN prunes (omits) random neurons and connections (20\% for this ANN) to prevent overfitting and force the ANN to learn the patterns visible in the training data. This is done to prevent the ANN from depending on any specific neuron, which is common in smaller ANN's (like the one created for this paper) or with a relatively small amount of training data (also the case in this problem). An example of a pruned neural network is shown in Figure~\ref{figure: NN}. The data followed the standard 90/10 split, whereby 90\% of the data was used to train the model, and 10\% to test the models accuracy. Rectified Linear Unit (ReLU) was chosen as the activation function for the first 2 ANN layers, due to the many benefits it provides over other functions like Sigmoid, which tend to slow the model down during backpropagation, since it confines all inputs into the range $[0, 1]$. For very large or small input values, the gradient is disproportionally closer to 0, which significantly slows down the updating of weights between neurons. Although many slightly different variations of the ReLU function exist, the ANN used the function defined as $x\mapsto \max(0, x)$.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{prunes-nn-vis}
+    \caption{Example of pruned neural network}
+    \label{exampleID}
+    \label{figure: NN}
+\end{figure}
 
 The final layer was standardized using the Softmax function, again as is custom in multilayer classification neural networks. Softmax standardizes the outputs to be a valid probability distribution, defined as:
 \begin{equation}\label{eq:softmax}
     \text{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{n} e^{z_j}}
 \end{equation}
-The ANN also used three additional functions to calculate its effectiveness. The optimizer Adam function was used to accelerate convergence towards local minima, defined mathematically below:
+The ANN also used three additional functions to calculate its effectiveness. The optimizer Adam (Adaptive Moment Estimation) function was used to minimize the loss function dynamically, by changing the weights and biases of neurons and connections. It ensures the neural network converges to a good solution efficiently. It is defined mathematically below:
 \begin{align}\label{eq:adam func}
     \begin{split}
     &\omega_{t+1}=\omega_t-\alpha m_t\\
@@ -114,55 +123,47 @@ The ANN also used three additional functions to calculate its effectiveness. The
     \end{split}
 \end{align}
 
-\begin{table}[ht]
-\caption{Variable definition for eqn~(\ref{eq:adam func})}
+\begin{table}[H]
+\caption{Variable Definitions for Equation~(\ref{eq:adam func})}
 \centering
-\vspace{5pt}
-\begin{tabular}{||l l||} 
+\begin{tabularx}{\textwidth} {
+  >{\raggedright\arraybackslash}X 
+  >{\raggedright\arraybackslash}X  }
  \hline
- Variable & Definition \\ [0.5ex] 
+ \textbf{Variable} & \textbf{Definition} \\
  \hline\hline
-  $t_0$ & Initial time, $t_0\equiv 0$ \\ 
- \hline
- $m_t$ & Aggregate of gradients at $t$ ($m_{t_0}=0$) \\ 
- \hline
+  $t_0$ & Initial time, $t_0 = 0$ \\
+ $m_t$ & Aggregate of gradients at $t$ ($m_{t_0}=0$) \\
  $m_{t-1}$ & Aggregate of gradients at $t_{previous}$ \\
- \hline
- $\omega_{t}$ & Weights at $t$ \\
- \hline
- $\omega_{t+1}$ & Weights at $t\equiv t+1$ \\
- \hline
- $\alpha_t$ & Learning rate at $t$ \\
- \hline
- $\partial L$ & Derivative of the loss function \\
- \hline
+ $\omega_{t}$ & Weights at $t$ \\ 
+ $\omega_{t+1}$ & Weights at $t\equiv t+1$ \\ 
+ $\alpha_t$ & Learning rate at $t$ \\ 
+ $\partial L$ & Derivative of the loss function \\ 
  $\partial \omega_t$ & Derivative of weights at $t$ \\
+ $\beta$ & Moving average parameter, const. \\
  \hline
- $\beta$ & Moving average parameter, const. \\ [1ex] 
- \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
-The loss function was chosen to be \textit{Binary Cross Entropy} (also known as \textit{log loss}), defined as:
+The loss function was chosen to be \textit{Binary Cross Entropy} (also known as \textit{log loss}). The neural network was punished when loss was high, which leads to the ANN learning the data. The Binary Cross Entropy function is defined as:
 \begin{equation}\label{eq:binary crossentropy}
-    BCE=-\frac{1}{N}\sum_{i=0}^{N}\left [y_i \log(p_i) +(1-y_i)\log(1-p_i)\right]
+    \text{BCE} = -\frac{1}{N}\sum_{i=0}^{N}\left [y_i \log(p_i) +(1-y_i)\log(1-p_i)\right]
 \end{equation}
 
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Variable definition for eqn~(\ref{eq:binary crossentropy})}
 \centering
 \vspace{5pt}
-\begin{tabular}{||l l||} 
+\begin{tabularx}{\textwidth} {
+  >{\raggedright\arraybackslash}X 
+  >{\raggedright\arraybackslash}X  }
  \hline
- Variable & Definition \\ [0.5ex] 
+ \textbf{Variable} & \textbf{Definition} \\
  \hline\hline
   $N$ & Number of instances \\
- \hline
-  $y_i$ & True label for instance $i$ \\ 
- \hline
- $p_i$ & Model predicted probability of instance $i$ \\ [1ex] 
- \hline
-\end{tabular}
+  $y_i$ & True label for instance $i$ \\
+ $p_i$ & Model predicted probability of instance $i$ \\ \hline
+ \end{tabularx}
 \end{table}
 
 \subsubsection{Results}
@@ -173,19 +174,17 @@ Full results of ANN predictions may be found in Section~\ref{RestultsIntegration
 \caption{Key ANN metrics}
 \centering
 \vspace{5pt}
-\begin{tabular}{||l l||} 
+\begin{tabularx}{\textwidth} {
+  >{\raggedright\arraybackslash}X 
+  >{\raggedright\arraybackslash}X  }
 \hline
- Metric & Value \\ [0.5ex] 
+ \textbf{Metric} & \textbf{Value} \\   
  \hline\hline
-  Training Accuracy & $0.9976$ \\
- \hline
-  Training Loss & $0.0173$ \\ 
- \hline
- Validation Accuracy & $0.9250$ \\
- \hline
- Validation Loss & $0.2187$\\ [1ex] 
- \hline
-\end{tabular}
+  Training Accuracy & $0.9976$\\ 
+  Training Loss & $0.0173$\\
+ Validation Accuracy & $0.9250$\\
+ Validation Loss & $0.2187$\\ \hline
+\end{tabularx}
 \end{table}
 
 Although it is not possible to fully understand how the neural network learned the data, the four above metrics give insight into its workings on both training and validation (testing) data. Looking at the training metrics first, it becomes clear the model handles seen data exceptionally well, with an extremely high training accuracy and very low training loss. Usually, this means the neural network is extremely well trained. In this case, however, it may point towards overfitting, since the winners of events are (somewhat) random. Having a $0.9976$ and $0.0173$ training accuracy and loss on a slightly random data set is a first indication of overfitting in the model. However, the ANN still fairs well with data it has not yet seen, as evidenced by the relatively high validation accuracy. The increase in loss value from training to validation does support the overfitting hypothesis, however it is well within accepted ranges for well trained neural networks, meaning the predictions of the ANN may be accepted as valid.
@@ -194,44 +193,48 @@ Although it is not possible to fully understand how the neural network learned t
 
 \subsubsection{Data Processing}
 
-
-
 \section{Results Integration}\label{RestultsIntegration}
 \subsection{Determination evaluation indicators}
+The final predictions obtained by the two methods above are shown in the table below:
 \begin{table}[H]
 \centering 
 \label{A}
-\caption{Medals Earned of Each Country in 2028 Olympic Game}
+ \caption{Medals Earned of Each Country in 2028 Olympic Game}
 \vspace{5pt}
-\begin{tabular}{l|c|c}
+\begin{tabular}{lcc}
 \hline
-Name of Country &Artificial Neural Network & Multiple Linear Regression \\
-\hline
-United.States & 144 & A\\
+\textbf{Name of Country} & \textbf{Artificial Neural Network} & \textbf{Multiple Linear Regression} \\
+\hline\hline
+United States & 144 & A\\
 Great Britain & 60 & A\\
 France & 42 & A\\
 Italy & 28 & A\\
-Germany & 23 & A\\
-$\vdots$ & $\vdots$ & $\vdots$\\
-Merope & 0 & A\\
-Scaup & 0 & A\\
-Hilariuus & 0 & A\\
-United States/France & 0 & A\\
+Germany & 23 & A\\ 
+$\vdots$ & $\vdots$ & $\vdots$\\ 
+Democratic Republic of the Congo & 0 & A\\
+Wales & 0 & A\\
+South Sudan & 0 & A\\
+North Macedonia & 0 & A\\ 
 \hline
 \end{tabular}
 \end{table}
-To solve the problem of differences in the data obtained from different methods, we need to use particular methods to combine these outcomes to get the results. To do this, we adapt the entropy-weighted method to calculate the synthetic result.
 \begin{figure}[h]
   \centering
   \includegraphics[example-image-a]{1} % 直接写图片名字，不需要后缀
   \caption{Distributions of medals earned of this two method }
   \label{exampleId}
 \end{figure}
+However, due to the differences of these two algorithm, there are many differences exist between the values obtained by different method. 
+
+The prediction of the neural network was standardized relative to the number of disciplines projected to be in the 2028 Olympics. Clearly, if more events are in a given Olympic, the higher the total number of medals will be, and therefore the total number of medals won by each team will be greater. Since the events and teams for the 2028 Olympics have not yet been published, we were forced to make assumptions regarding these metrics. For the medal predictions, the values were adjusted based on the number of events we assume will happen in 2028, which we took to be the exact same as in 2024. The model does account, however, for a differing number of disciplines, and can be parsed into the function to change to predictions.
+
+To solve the problem of differences in the data obtained from different methods, we need to use particular methods to combine these outcomes to get the results. To do this, we adapt the entropy-weighted method to calculate the synthetic result.
+
 \subsection{Entropy Weight Method Model}
-The entropy-weighted model is an evaluation model that determines the weights of various indicators based on the differences in the information contained in each indicator and combines the rankings derived from the proximity to the ideal solution. The specific operational flow chart is as follows:\\
+The entropy-weighted model is an evaluation model that determines the weights of various indicators based on the differences in the information contained in each indicator and combines the rankings derived from the proximity to the ideal solution. The specific operational flow chart is as follows:
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.5cm, scale=1.5, transform shape] % 缩放到合适大小
+\begin{tikzpicture}[node distance=1.3cm, scale=1.2, transform shape] % 缩放到合适大小
 % 定义节点
 \node (start) [startstop] {Entropy-weighted model};
 \node (step1) [process, below of=start] {Positive Transformation and standardization of data};
@@ -252,29 +255,27 @@ In most previous competitions, most countries didn`t win any medals, and only ve
 \begin{equation}\label{eq:1}
 f(x;k,\theta) =\frac{1}{\Gamma(k) \theta^k}x^{k-1}e^{-\frac{x}{\theta}}.
 \end{equation}
-In this case, we will gonna doing the positive transformation by using the formula below:
-\begin{equation}\label{eq:1}
+In this case, we are going to do the positive transformation by using the formula below:
+\begin{equation}\label{K}
 x_i = \frac{f(x_i) - \min(f(x))}{\max(f(x)) - \min(f(x))}
 \end{equation}
-The $x_i$ means the number of medals a particular country gains under a specific method.\\
-The data after the positive transformation is in the table below:\\
+The $x_i$ in(\ref{K}) is the number of medals a particular country gains under a specific method. The data after the positive transformation is in the table below:
 \begin{table}[H]
 \centering 
 \label{A}
 \caption{Data about medals earned after positive transformation}
 \vspace{5pt}
-\begin{tabular}{l|c|c}
+\begin{tabular}{lcc}
 \hline
-Name of the Country & Artificial Neural Network & Multiple Linear Regression \\
-\hline
-\hline
+\textbf{Name of the Country} & \textbf{Artificial Neural Network} & \textbf{Multiple Linear Regression} \\
+\hline\hline
 \end{tabular}
 \end{table}
 After the positive transformation, we need to normalize the data by using the formula below:\\
 \begin{equation}\label{V}
-\hat{x}_i=\frac{x_i}{\sqrt{x_{1}^{2}+x_{2}^{2}+\cdot \cdot +x_{n}^{2}}}
+\hat{x}_i=\frac{x_i}{\sqrt{x_{1}^{2}+x_{2}^{2}+\cdots+x_{n}^{2}}}
 \end{equation}
-In the formula~\eqref{V}, the $x_i$ represent the medals earned obtained under a method. And $n$ is the number of the country. Since we obtain the medals earned by using two different method, we can use a two-dimension matrix to contain these value:\\
+In the formula~\eqref{V}, $n$ is the number of the country. Since we obtain the medals earned by using two different method, we can use a two-dimension matrix to contain these value:\\
 \begin{equation}\label{eq:3}
 \tilde{x}=
 \begin{bmatrix}
@@ -285,7 +286,7 @@ In the formula~\eqref{V}, the $x_i$ represent the medals earned obtained under a
 	x_{n1}&		x_{n2}\\
 \end{bmatrix}
 \end{equation}
-The first column represents the medals earned obtained using artificial neural networks, and the second column represents the medals earneds obtained using multiple linear regression.
+The first column represents the medals earned as a prediction from the artificial neural network, and the second column represents the medals earned from the prediction of multiple linear regression.
 Now, our goal changes to find the matrix:
 \begin{equation}\label{eq:3}
 \tilde{z}=
@@ -312,7 +313,7 @@ After gaining the normalized data of the medals earned, we calculating the Weigh
 	p_{n1}&		p_{n2}\\
 \end{bmatrix}
 \end{equation}
-and
+where
 \begin{equation}\label{eq:1}
 \tilde{p}_{ij}=\frac{z_{ij}}{\sum_{i=1}^n z_{ij}}
 \end{equation}
@@ -334,29 +335,32 @@ The entropy-weighted method was coded in Python 3.12.6 with data analysis librar
 \label{B}
 \caption{Weight of Each Method}
 \vspace{5pt}
-\begin{tabular}{l|c}
+\begin{tabularx}{\textwidth} {
+  >{\raggedright\arraybackslash}X 
+  >{\raggedright\arraybackslash}X  }
 \hline
-Artificial Neural Network & Multiple Linear Regression \\
-\hline
-\hline
-\end{tabular}
+\textbf{Artificial Neural Network} & \textbf{Multiple Linear Regression} \\
+\hline\hline
+\end{tabularx}
 \end{table}
-Based on the composite weights, we calculate the weighted average of the medals earned obtained by different methods for the same country\\
+Based on the composite weights, we calculate the weighted average of the medaas earned obtained by different methods for the same country:
 \begin{equation}\label{eq:1}
-\text{medals earned} = w_\text{ANN}R_\text{ANN} + w_\text{MLR}R_\text{MLR}
+\text{Medals earned} = w_\text{ANN}R_\text{ANN} + w_\text{MLR}R_\text{MLR}.
 \end{equation}
-to derive the final medals earned for each country as show in the table below:\\
+ $R_{}$ is the total medals earned by a certain country calculated by the artificial neural network, and $R_(MLR)$ is the total medals earned by the same country calculated by the multiple linear regression.\\
+We use this to derive the final medals earned for each country as show in the table below:
 \begin{table}[H]
 \centering 
 \label{c}
-\caption{medals earned of Each Country}
+\caption{Medals Earned from Each Country}
 \vspace{5pt}
-\begin{tabular}{l|c}
-\hline
-Name of the country & medals earned \\
-\hline
-\hline
-\end{tabular}
+\begin{tabularx}{\textwidth} {
+  >{\raggedright\arraybackslash}X 
+  >{\raggedright\arraybackslash}X  }
+ \hline
+\textbf{Name of the country} & \textbf{Medals earned} \\
+\hline\hline
+\end{tabularx}
 \end{table}
 
 
@@ -372,21 +376,25 @@ Name of the country & medals earned \\
 
 
 
-\section{Evaluate of the Mode}
-
+\section{Evaluation of the Model}
+Certain features of the models used in this paper work better for different questions one may have regarding the 2028 Olympics medal distribution. In truth, a combination of the ANN and MLR is useful for a more rounded overall model. While certain predictions are consistent across both models, there are crucial differences which make one better than the other in certain aspects. For example, the ANN model predicts that no new countries will win a medal in the 2028 Olympics, and it is quite easy to understand why. The model has learned that over the span of 128 years and 32 Summer Olympic Events, a particular country has not won once. On the basis of that knowledge, there is no reason why it should suggest that suddenly a country may win a medal. In this case, the linear regression model reigns supreme, as it operates on an entirely different basis, as does not fall short to the situation described above. Conversely, finding relationships of specific variables, rather than entire datasets, the MLR model is able to more accurately predict whether a country will win its first medal based on its attributes. Another consequence of the ANN learning entire data sets is a possible erroneous prediction of certain team medals. For instance, China has taken part in merely 11 Olympics, as opposed to the United States which took part in almost 30. This results in the ANN assigning China 0 medals for all Olympics it had not participated in, reinforcing a notion that China's recent successes a merely a fluke, not replicable in future events. Again, in such situations the MLR has an advantage over the ANN. The ANN model works better for conclusions requiring a view on the whole set of data, such as the influence of \textit{Host Advantage}. The MLR tries to account for this metric, but finds very little correlation, since it bases its predictions on only 1 Summer Olympic prior. This may explain the reason for a bigger discrepancy for the number of medals won by the United States than for any other country - perhaps the ANN found support for Host Advantage playing a role, and predicts the United States, as a host of the 2028 Los Angeles Olympics, will earn more medals. Many such differences exist between the two models, which is why we elected to construct both in harmony with each other. Their collective predictions should be a much more trust-worthy metric, as compared to both models in solitude.
 \section{Strengths and weaknesses}
 
 
 \subsection{Strengths}
 \begin{itemize}
-\item \textbf{}\\
-
-\item \textbf{}\\
-
+\item{}
 \end{itemize}
 
-\subsection{How to cite?}
+\subsection{Weaknesses}
+\begin{itemize}
+\item {Gamma distribution might not be able to exactly describe the distribution of the medals earned of each country}
+\item {The ANN model takes into account all historical data, and sometimes predicts countries like the Soviet Union, Yugoslavia or Czechoslovakia as a possible winner. While the model ranks these countries very low, it ranks them nonetheless, meaning it may in theory predict that a non-existent country will win a medal, which is impossible.}
+\item \\
 
+\item \\
+
+\end{itemize}
 
 \begin{thebibliography}{99}
 
@@ -396,14 +404,9 @@ Name of the country & medals earned \\
 
 \section{First appendix}
 
-
-
 \section{Second appendix}
 
-
-
 \end{appendices}
-
 
 \AImatter
 
