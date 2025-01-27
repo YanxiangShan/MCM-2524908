@@ -1,52 +1,42 @@
 Medal Table:
 United States: 144
-Great Britain: 60
-France: 42
-Italy: 28
-Germany: 23
-Australia: 19
-Japan: 15
-Canada: 14
-Hungary: 11
-Sweden: 10
-Netherlands: 9
-Spain: 8
-China: 7
-Poland: 7
+France: 60
+Italy: 37
+Germany: 28
+Australia: 23
+Japan: 18
+Canada: 16
+Hungary: 13
+Sweden: 11
+Netherlands: 10
+Spain: 9
+Poland: 8
+China: 8
 Brazil: 6
-Soviet Union: 5
-Switzerland: 5
-Russia: 5
-South Korea: 4
-Belgium: 4
-Romania: 4
+Switzerland: 6
+Romania: 5
+Belgium: 5
 Denmark: 4
 Finland: 4
-Czechoslovakia: 3
-Austria: 3
-Argentina: 3
+Austria: 4
+Argentina: 4
 Greece: 3
 Mexico: 3
 Bulgaria: 3
-New Zealand: 2
-Norway: 2
-Cuba: 2
+New Zealand: 3
+Norway: 3
+Cuba: 3
 Ukraine: 2
-West Germany: 2
 South Africa: 2
-East Germany: 2
-Yugoslavia: 2
 Egypt: 2
-Ireland: 1
-Portugal: 1
-India: 1
+Portugal: 2
+India: 2
+Ireland: 2
 Belarus: 1
 Turkey: 1
-Chinese Taipei: 1
 Colombia: 1
-Czech Republic: 1
 Kazakhstan: 1
-Venezuela: 1
+Czech Republic: 1
 Puerto Rico: 1
 Nigeria: 1
 Israel: 1
@@ -56,31 +46,28 @@ Chile: 1
 Jamaica: 1
 Thailand: 1
 Kenya: 1
-Unified Team: 1
-Iran: 1
 Philippines: 1
 Uzbekistan: 1
 Morocco: 1
-Slovenia: 1
 Lithuania: 1
-Algeria: 0
-Tunisia: 0
-Slovakia: 0
-Malaysia: 0
-Hong Kong: 0
-Peru: 0
-North Korea: 0
-Uruguay: 0
-Serbia: 0
-Latvia: 0
+Slovenia: 1
+Algeria: 1
+Tunisia: 1
+Slovakia: 1
+Peru: 1
+Hong Kong: 1
+Malaysia: 1
+Uruguay: 1
+Serbia: 1
+Latvia: 1
 Mongolia: 0
 Pakistan: 0
 Estonia: 0
-Indonesia: 0
 Guatemala: 0
+Indonesia: 0
 Azerbaijan: 0
-Singapore: 0
 Iceland: 0
+Singapore: 0
 Dominican Republic: 0
 Trinidad and Tobago: 0
 Ecuador: 0
@@ -95,39 +82,27 @@ Angola: 0
 Uganda: 0
 Kyrgyzstan: 0
 Fiji: 0
-Serbia and Montenegro: 0
 Lebanon: 0
 Costa Rica: 0
 El Salvador: 0
 Kuwait: 0
-Korea: 0
 Zambia: 0
 Iraq: 0
 Cyprus: 0
-Vietnam: 0
-Moldova: 0
 Saudi Arabia: 0
-United States Virgin Islands: 0
 Armenia: 0
 Barbados: 0
 Qatar: 0
-Syria: 0
 Honduras: 0
-Cote d'Ivoire: 0
-Mauritius: 0
 Bermuda: 0
 Sri Lanka: 0
 Panama: 0
-Türkiye: 0
 Paraguay: 0
-Czechia: 0
+Mauritius: 0
 Bahrain: 0
 San Marino: 0
 Nicaragua: 0
 Monaco: 0
-Bohemia: 0
-Bolivia: 0
-Tanzania: 0
 Seychelles: 0
 Madagascar: 0
 Papua New Guinea: 0
@@ -141,7 +116,6 @@ Malta: 0
 Montenegro: 0
 Liechtenstein: 0
 Mali: 0
-Individual Olympic Athletes: 0
 Samoa: 0
 Sudan: 0
 Botswana: 0
@@ -150,21 +124,15 @@ Sierra Leone: 0
 Myanmar: 0
 Nepal: 0
 Guyana: 0
-United Arab Republic: 0
-Hong Kong, China: 0
 Mozambique: 0
 Libya: 0
-Saar: 0
 Cayman Islands: 0
-Congo (Brazzaville): 0
 Benin: 0
-Congo (Kinshasa): 0
 Malawi: 0
 Namibia: 0
 Bosnia and Herzegovina: 0
 Tajikistan: 0
 Albania: 0
-Netherlands Antilles: 0
 Turkmenistan: 0
 Belize: 0
 Gabon: 0
@@ -174,814 +142,45 @@ Suriname: 0
 Grenada: 0
 Swaziland: 0
 Central African Republic: 0
-Australasia: 0
 Burkina Faso: 0
 Bangladesh: 0
 Togo: 0
 Niger: 0
 Rwanda: 0
 Oman: 0
-Laos: 0
 Andorra: 0
-Macedonia: 0
 Lesotho: 0
 Eritrea: 0
-South Vietnam: 0
 Aruba: 0
 Tonga: 0
 Gambia: 0
-EOR: 0
-IR Iran: 0
 Cook Islands: 0
 Burundi: 0
 Maldives: 0
-AIN: 0
 Vanuatu: 0
 American Samoa: 0
 Yemen: 0
 Djibouti: 0
 Equatorial Guinea: 0
 Saint Vincent and the Grenadines: 0
-British Virgin Islands: 0
 Saint Lucia: 0
 Chad: 0
-Palestine: 0
-Refugee Olympic Team: 0
 Bhutan: 0
-Republic of Moldova: 0
 Solomon Islands: 0
 Saint Kitts and Nevis: 0
-Malaya: 0
 Mauritania: 0
 Palau: 0
-Kosovo: 0
-England: 0
 Comoros: 0
 Somalia: 0
 Dominica: 0
-Federated States of Micronesia: 0
 Cape Verde: 0
-Royal Club Nautique de Gand: 0
-Ivory Coast: 0
-Socit Nautique de Bayonne: 0
-Scotland: 0
-DPR Korea: 0
-Guinea Bissau: 0
-Phalainis ton Thorichtou "Hydra": 0
 Marshall Islands: 0
-West Indies Federation: 0
 Kiribati: 0
-Union des Socits Franais de Sports Athletiques: 0
-Toronto Argonauts: 0
-North Macedonia: 0
 South Sudan: 0
 Sao Tome and Principe: 0
-UA Emirates: 0
 Nauru: 0
 Côte d'Ivoire: 0
-Marinai della nave da guerra "Varese": 0
-Refugee Olympic Athletes: 0
-North Yemen: 0
-Chicago Athletic Association: 0
-New York Athletic Club: 0
-Vesper Boat Club: 0
-Brunei: 0
-Rhodesia: 0
 Tuvalu: 0
-Lemzos Thorichton "Psara": 0
-Kristiania Roklub: 0
-Roddklubben af 1912: 0
-Cornwall: 0
-Pan: 0
-Minerva Amsterdam: 0
-Leander Club: 0
-Socit Nautique de la Basse Seine: 0
-Frankfurt Club: 0
-Ali: 0
-USFSA: 0
-Christian Brothers' College: 0
-Large boat, Central Naval Prep School "Poros": 0
-Lemzos Thorichton "Spetsai": 0
-Cambridge University Boat Club: 0
-Societ Nautique de la Marne: 0
-Dansk Idrts Forbund: 0
-Panhellenios Gymnastikos Syllogos: 0
-Quand: 0
-Angelita: 0
-Libellule de Paris: 0
-Thessalonki: 0
-Athens: 0
-Smyrna: 0
-Pistoja/Firenze: 0
-Wales: 0
-Democratic Republic of the Congo: 0
-Eswatini: 0
-Cabo Verde: 0
-Gteborgs Roddklubb: 0
-Berliner Ruderverein von 1876: 0
-Pannonia RC/National RC: 0
-Sydney Rowing Club: 0
-Moseley Wanderers: 0
-Crabe II: 0
-Nina Claire: 0
-Erna Signe: 0
-Gitana: 0
-Djinn: 0
-Timor Leste: 0
-Racing Club de France: 0
-Crete: 0
-St. Rose: 0
-Upton Park FC: 0
-Galt Football Club: 0
-United States Golf Association: 0
-Roma: 0
-La Salle Turnverein, Chicago: 0
-New York Turnverein, New York: 0
-Philadelphia Turngemeinde, Philadelphia: 0
-Winnipeg Shamrocks: 0
-DR Congo: 0
-Bosnia & Herzegovina: 0
-Norwegian Rowing Association: 0
-Favorite Hammonia: 0
-Bucintoro Venezia: 0
-Aschenbrodel: 0
-Magda IX: 0
-Atlanta: 0
-Olle: 0
-Gwendoline: 0
-Favorite: 0
-Mascotte: 0
-Llanoria: 0
-Matrero II: 0
-Antwerpia V: 0
-Tritons Lillois: 0
-Missouri Athletic Club: 0
-Cincinnati Archers: 0
-South Yemen: 0
-Devon and Somerset Wanderers: 0
-Univ. of Brussels: 0
-Trans: 0
-Western Golf Association: 0
-Concordia Turnverein, St Louis: 0
-Turnverein Vorwrts, Chicago: 0
-Socialer Turnverein, Detroit: 0
-St. Louis Amateur Athletic Association: 0
-The Gambia: 0
-Virgin Islands, US: 0
-Virgin Islands: 0
-São Tomé and Príncipe: 0
-Hungaria Evezos Egylet: 0
-Berliner Ruderclub Sport: 0
-Germania Ruder Club, Hamburg: 0
-Nautikos Omilos: 0
-Cercle de l'Aviron Roubaix: 0
-Ludwigshafener Ruder Verein: 0
-Omilos Ereton Smyrnis: 0
-Argonaut Rowing Club: 0
-Sarcelle: 0
-Scotia: 0
-Scamasaxe: 0
-C.V.A.: 0
-Martha: 0
-Lerina: 0
-Amulet: 0
-Marga: 0
-Kitty: 0
-Hera: 0
-Mouchette: 0
-DeRuyter: 0
-May Be VII: 0
-Qu'Importe: 0
-Italia: 0
-Saskia: 0
-Santa Maria: 0
-Ilderim: 0
-Lyn: 0
-Pampero: 0
-Denmark/Sweden: 0
-St. Louis Southwest Turnverein #1: 0
-K Division Metropolitan Police Team: 0
-Boer Team: 0
-Potomac Archers: 0
-Passaic Turnverein, Passaic: 0
-Turnverein Vorwrts, Cleveland: 0
-South St Louis Turnverein, St Louis: 0
-Lao PDR: 0
-Mohawk Indians: 0
 Timor: 0
-Virgin Islands, B: 0
-Centr Afric Re: 0
 Congo: 0
-StVincent&Grenadines: 0
-Gyrinus: 0
-Foxhunters Hurlingham: 0
-New College, Oxford: 0
-Club Nautique de Lyon: 0
-Polyteknisk Roklub: 0
-R.: 0
-Vaxholm Roddklubb: 0
-Magdalen College Boat Club: 0
-Century Boat Club: 0
-Western Rowing Club: 0
-Sidi: 0
-Mamie: 0
-Mosk II: 0
-Gallia II: 0
-Boreas: 0
-Heira II: 0
-Singy: 0
-Twins VIII: 0
-John B: 0
-Subbnboana: 0
-Lalage: 0
-Hungaria: 0
-LaBandera: 0
-Esperia: 0
-Tutti V: 0
-Ylliam II: 0
-Ubu: 0
-Aloha II: 0
-Raili: 0
-Ralia: 0
-Lully II: 0
-Frieda: 0
-Titia: 0
-Taifun: 0
-Lucky Girl: 0
-Feo: 0
-Emily: 0
-K.S.S.S. 1912: 0
-Vinga: 0
-Sans Atout: 0
-Dolfijn: 0
-Vinha: 0
-Joy: 0
-Rika II: 0
-New York Athletic Club #1: 0
-Liverpool Police Team: 0
-Osborne Swimming Club, Manchester: 0
-Brussels Swimming and Water Polo Club: 0
-Pupilles de Neptune de Lille #1: 0
-Amateur Athletic Association: 0
-Lucky Star: 0
-Davenport Turngemeinde, Davenport: 0
-Norwegier Turnverein, Brooklyn: 0
-Central Turnverein, Chicago: 0
-Sao Tome & Principe: 0
-St Kitts and Nevis: 0
-Micronesia: 0
 Brunei Darussalam: 0
-East Timor: 0
-Republic of the Congo: 0
-Compigne Polo Club: 0
-Life boat naval ship "Spetsai": 0
-Phalainis ton Thorichtou "Psara": 0
-Club Nautique de Dieppe: 0
-Club Nautique de Franais: 0
-Peiraikos Syndesmos: 0
-Ormsund Roklub: 0
-Gteborgs Roddfrening: 0
-Helsingfors R. K.: 0
-Barion/Bari: 0
-Atalanta Boat Club: 0
-Baby: 0
-Fantlet: 0
-Pierre et Jean: 0
-Crabe I: 0
-Galopin: 0
-Crocodile: 0
-Ducky: 0
-Nina: 0
-Eleda: 0
-Heatherbell: 0
-Frimousse: 0
-Turquoise: 0
-Elsie: 0
-Mirtala: 0
-Snowten III: 0
-Complex II: 0
-Tim: 0
-Unique: 0
-Viking: 0
-Viktoriya: 0
-Roy: 0
-Minotaur: 0
-Rush V: 0
-Grifone: 0
-Elisabeth X: 0
-Ciocca II: 0
-Caprice: 0
-Jo: 0
-Willem: 0
-Ylliam VIII: 0
-Gustel V: 0
-Hatuey: 0
-Morena: 0
-Ylliam VII: 0
-Dormy: 0
-Fruits: 0
-Bonzo: 0
-May Be: 0
-Marmi II: 0
-Apache: 0
-Freja: 0
-Ingegerd: 0
-Johan: 0
-Nurdug II: 0
-Tan: 0
-Sibindi: 0
-Mebi: 0
-Hi: 0
-Danuta: 0
-Heroine: 0
-Ancora: 0
-rn: 0
-Fram: 0
-Anitra: 0
-Germania II: 0
-Namoussa: 0
-Bamba: 0
-Cobweb: 0
-Babe: 0
-Silja: 0
-Irene: 0
-Sorais: 0
-Sildra: 0
-Noreg: 0
-Norman: 0
-Tornado: 0
-Bluebottle: 0
-Aletta: 0
-Snude: 0
-Tango: 0
-Argus: 0
-Paula: 0
-June Climene: 0
-Red Dragon: 0
-Akatonbo: 0
-Rififi: 0
-Canopus: 0
-Virginie: 0
-Spirit III: 0
-Pam: 0
-Miss Nippon V: 0
-Alcaid: 0
-Pan II: 0
-Kalayaan: 0
-Bim: 0
-Beaver: 0
-Daisy: 0
-Lotta IV: 0
-Bem II: 0
-Merope III: 0
-Deutscher Schwimm Verband Berlin: 0
-United States/Great Britain: 0
-Milwaukee Athletic Club: 0
-St. Louis Southwest Turnverein #2: 0
-Omas Helliniki P. S.: 0
-Pupilles de Neptune de Lille #2: 0
-Unknown: 0
-Ethnikos Gymnastikos Syllogos: 0
-Dylan: 0
-BLO Polo Club, Rugby: 0
-Hurlingham: 0
-Bagatelle Polo Club, Paris: 0
-A North American Team: 0
-Roehampton: 0
-Ral: 0
-Nykjbings paa Falster: 0
-Ludwigshafener Ruderverein: 0
-Thames Rowing Club: 0
-Studenternes Roklub: 0
-Roklubb Kbnhavn: 0
-Rowing Club Castillon: 0
-Cercle Nautique de Reims: 0
-Stade Franais AC: 0
-Mound City Rowing Club: 0
-Amstel Amsterdam: 0
-Berliner Ruderclub: 0
-Leander Club #2: 0
-Seawanhaka Boat Club: 0
-Leander Club #1: 0
-Ravenswood Boat Club: 0
-Independent Rowing Club: 0
-Plume: 0
-Souriceau: 0
-Carabinier: 0
-Hb: 0
-Colette: 0
-Suzon IV: 0
-Demi: 0
-Verveine: 0
-Ariette: 0
-Alcyon: 0
-Freia: 0
-Esterel: 0
-Beatrijs III: 0
-Brat: 0
-Mignon: 0
-Femur: 0
-Bona Fide: 0
-Mascaret: 0
-Gyp: 0
-Pirouette: 0
-Marsouin: 0
-Kullan: 0
-Sif: 0
-Yeoman VII: 0
-Druzhba: 0
-Damoiselle: 0
-Bronia: 0
-Bingo: 0
-Sjhxa: 0
-Ciocca III: 0
-Shoveller: 0
-Posillipo III: 0
-Tom Kyle: 0
-Tilly: 0
-Buraddoo: 0
-Rush IV: 0
-Gilliatt V: 0
-Teresita: 0
-Jill: 0
-Bermudes: 0
-Encore: 0
-Fram III: 0
-Alain IV: 0
-Yeoman V: 0
-Rush VII: 0
-State VI: 0
-Barrenjoey: 0
-Voloira II: 0
-Hojwa: 0
-Ardilla: 0
-Stella: 0
-Cupidon Viking: 0
-Guyoni: 0
-Kerstin: 0
-Wiking: 0
-Edelweiss II: 0
-Ciocca: 0
-Elisabeth V: 0
-Nirwana: 0
-Kemphaan: 0
-Zut: 0
-Lynn: 0
-Mac Miche: 0
-Oranje: 0
-Rose Pompon: 0
-Bylina: 0
-Blue Red: 0
-EA II: 0
-Bera: 0
-Cupidon III: 0
-L'Aile VI: 0
-Hollandia: 0
-Sheerio: 0
-Sylvia: 0
-Mutafo: 0
-Olen: 0
-Lett: 0
-Tip: 0
-Linglom: 0
-Snap: 0
-Sabre: 0
-Grifo III: 0
-Damoiselle IV: 0
-Dinah V: 0
-White Lady: 0
-Ausonia: 0
-Chok: 0
-Slaghoken II: 0
-Serendipity: 0
-Gabbiano: 0
-Ceres II: 0
-Galatea II: 0
-Allegro: 0
-Venilia: 0
-Cambria: 0
-Oleander XII: 0
-Phoenix: 0
-Galejan: 0
-Girl Pat: 0
-Aphrodite: 0
-Trintel II: 0
-Rhythm: 0
-Proteus II: 0
-Tu: 0
-Argeste: 0
-Korshun: 0
-Aretusa: 0
-Salamander: 0
-Kuling: 0
-Skidoo: 0
-Tomahawk II: 0
-Escapade: 0
-Barco Deloro: 0
-Spirit VI: 0
-Argo II: 0
-Neptun II: 0
-Persey: 0
-Gustel X: 0
-Gustl XI: 0
-Astrid III: 0
-Evita VI: 0
-Circus: 0
-Widgeon: 0
-Nikh: 0
-Calcinhas: 0
-Pigoule: 0
-Peri II: 0
-Fantasio III: 0
-Romolo: 0
-Aldebaran II: 0
-Kingfisher: 0
-Kon: 0
-Calypse II: 0
-Terrible: 0
-Diablo: 0
-Meteor: 0
-Mad Dog: 0
-Bermudian: 0
-Impala: 0
-Brigantia: 0
-Miss Denmark 1964: 0
-Tantalus: 0
-Tlaloc: 0
-Three Leaves: 0
-Syndi: 0
-Vento Sul: 0
-Macky VI: 0
-Tengiri: 0
-Olympion: 0
-Riccar: 0
-Lady C: 0
-Tineke: 0
-Falcon VI: 0
-Nokaut II: 0
-Harmony: 0
-Falcon IV: 0
-Sjovinge: 0
-Clementine V: 0
-The Cloud: 0
-GyoshuII: 0
-Swedish Star: 0
-Fortuna: 0
-Primorka: 0
-Symphony: 0
-Faneca: 0
-Nora: 0
-Tichiboo: 0
-Siames: 0
-Nortazo: 0
-Wannsee: 0
-Buscape II: 0
-Swift: 0
-Nausikaa 4: 0
-Arcturus: 0
-Covunco III: 0
-Scram: 0
-Espuma del Mar: 0
-Mari: 0
-Eissero VI: 0
-KNS: 0
-Uragan: 0
-Gem: 0
-Kurush IV: 0
-Vesania: 0
-Kurush II: 0
-Vicking: 0
-Pegaso: 0
-Fada: 0
-St. Margrite: 0
-Frip IV: 0
-Naiad: 0
-Gem II: 0
-Gem IV: 0
-Moorina: 0
-30. Februar: 0
-Mizar: 0
-Freddy: 0
-Springbok: 0
-Jupiter: 0
-Paka: 0
-Pasodoble: 0
-Shrew II: 0
-Hornet: 0
-Chance: 0
-Tramontane: 0
-Olimpia: 0
-Sunshine: 0
-Red Indian: 0
-Holland: 0
-Zefyros: 0
-Three Star Too: 0
-Bellatrix IX: 0
-Twinkle: 0
-Pimm: 0
-Donar III: 0
-Maryke: 0
-Rampage: 0
-Humbug V: 0
-Margaret: 0
-Ma'Lindo: 0
-Marie: 0
-Legionario: 0
-Enotria: 0
-Danaldo: 0
-Windor: 0
-Glider: 0
-Squid III: 0
-Pupilles de Neptune de Lille: 0
-New York Athletic Club #2: 0
-Great Britain/Germany: 0
-Australia/Great Britain: 0
-Germany/United States: 0
-France/Great Britain: 0
-Bohemia/Great Britain: 0
-London City Police: 0
-Chicago Archers: 0
-Boston Archers: 0
-Newfoundland: 0
-North Borneo: 0
-Mistral Hojris: 0
-Relampago: 0
-Whitini Star: 0
-Briar: 0
-Gran Gesto: 0
-Elvis Va: 0
-Calimucho: 0
-Oxalis: 0
-Don Schufro: 0
-Lancet: 0
-Whisper: 0
-Clearwater: 0
-Bonaparte: 0
-Mythilus: 0
-Rambo: 0
-Floresco: 0
-Brentina: 0
-Nadine: 0
-Pop Art: 0
-Quando Quando: 0
-Diabolo St Maurice: 0
-Ravel: 0
-Notavel: 0
-Galopin De La Font: 0
-Orion: 0
-Greenoaks Dundee: 0
-Sunrise: 0
-Salinero: 0
-Satchmo: 0
-Solos Carex: 0
-Dow Jones: 0
-Digby: 0
-Milwaukee Turnverein, Milwaukee: 0
-Wolseley: 0
-Camille: 0
-Quicksilver: 0
-Sea Dog: 0
-Omilos Ereton Peiraios: 0
-Giselle: 0
-Pettit: 0
-Tornade: 0
-Cinara: 0
-Dick: 0
-Jeannette: 0
-Rozenn: 0
-Laurea: 0
-Nan: 0
-Brynhild: 0
-Souvenance: 0
-Cicely: 0
-Formosa: 0
-Xolotl: 0
-Yeoman XII: 0
-Burevestnik: 0
-Web II: 0
-Web III: 0
-Vision: 0
-SagaII: 0
-Ballerina IV: 0
-Inga: 0
-Chaje II: 0
-Struten: 0
-Gullvinge: 0
-Yeoman: 0
-Surprise: 0
-Lasha: 0
-Mystery: 0
-Bissbi: 0
-Amolgavar: 0
-Norna: 0
-Gallant: 0
-Suzy: 0
-Camelia: 0
-Trickson VI: 0
-Twins II: 0
-Sonja II: 0
-Finn II: 0
-Sass: 0
-Sandra: 0
-Ciss: 0
-Fornebo: 0
-Saga: 0
-Breslau: 0
-Konstanz: 0
-Kiel: 0
-Dresden: 0
-Augsburg: 0
-Essen: 0
-Knigsberg: 0
-Lbeck: 0
-Angerburg: 0
-Nrnberg: 0
-Rostock: 0
-Heidelberg: 0
-Leipzig: 0
-Hannover: 0
-Bremen: 0
-Kln: 0
-Potsdam: 0
-Hamburg: 0
-Cuxhaven: 0
-Danzig: 0
-Brandenburg: 0
-Mainz: 0
-Tournade: 0
-Sidi Fekkar: 0
-Jeanette: 0
-Grifo IV: 0
-Monica: 0
-Slaghoken: 0
-Baccara: 0
-Partenope: 0
-Acipactli: 0
-Thalatta: 0
-Guanahani: 0
-Nirefs: 0
-Oleander II: 0
-Xantippa: 0
-Bajazzo: 0
-Patricia: 0
-Jet: 0
-Andromeda: 0
-Miss Nippon IV: 0
-Tajamar: 0
-Firebird II: 0
-Inca: 0
-Sirene: 0
-Peri: 0
-Chuckles: 0
-Pousse: 0
-Aldebaran: 0
-Yangon: 0
-Jest: 0
-Kannibaltje: 0
-Skum: 0
-Balaton: 0
-Hayama: 0
-Lucky: 0
-Combine: 0
-Wendehals: 0
-Pandora: 0
-Almaz: 0
-Maid of Lebanon: 0
-Vim III: 0
-Hakahana: 0
-Galerna: 0
-Hirondelle: 0
-Starlight III: 0
-Marmara: 0
-Andorinha: 0
-Chamukina: 0
-Acturus: 0
-Gam II: 0
-Antares: 0
-Umberta V: 0
-Espadarte: 0
-Bu III: 0
-Pakaria: 0
-Bella: 0
-May: 0
-Cha: 0
-Ariel: 0
-Gem III: 0
-Gem VII: 0
-Paka V: 0
-Espardate: 0
-Whirlaway: 0
-MitaII: 0
-Nephos I: 0
-Kathleen: 0
-Starita: 0
-Bellatrix XIII: 0
-Glisten: 0
-Myojo: 0
-Manana: 0
-Tulilind: 0
-Comanche: 0
-Merope: 0
-Scaup: 0
-Hilarius: 0
-United States/France: 0
