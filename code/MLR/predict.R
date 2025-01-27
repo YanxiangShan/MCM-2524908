@@ -9,8 +9,6 @@ gold.mdl   <- lm(Gold   ~ ., data = processed.data[, !(names(processed.data) %in
 silver.mdl <- lm(Silver ~ ., data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Silver"))])
 bronze.mdl <- lm(Bronze ~ ., data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Bronze"))])
 
-summary(total.mdl)
-
 year.location <- "Los Angeles, United States"
 prev.year <- 2024
 pred.medal.table <- data.frame()
@@ -58,8 +56,13 @@ pred.medal.table <- pred.medal.table[order(pred.medal.table$Total.fit, decreasin
 pred.medal.table.rounded <- pred.medal.table[names(pred.medal.table) == "NOC" | grepl(".*\\.fit", names(pred.medal.table))]
 names(pred.medal.table.rounded) <- sub("\\.fit", '', names(pred.medal.table.rounded))
 numeric.cols <- names(pred.medal.table.rounded) != "NOC"
-pred.medal.table.rounded[numeric.cols] <- lapply(pred.medal.table.rounded[numeric.cols],  function(x) ifelse(x > 0, round(x), 0))
+pred.medal.table.rounded[numeric.cols] <- lapply(pred.medal.table.rounded[numeric.cols],  round)
+
+pred.medal.table.rounded.pos <- pred.medal.table.rounded
+pred.medal.table.rounded.pos[numeric.cols] <- lapply(pred.medal.table.rounded.pos[numeric.cols], function(x) ifelse(x > 0, x, 0))
+
 pred.medal.table.rounded[pred.medal.table.rounded$Bronze + pred.medal.table.rounded$Silver + pred.medal.table.rounded$Gold != pred.medal.table.rounded$Total, ]
 
-write.csv(pred.medal.table, "./predicted_medal_table.csv", row.names = FALSE)
-write.csv(pred.medal.table.rounded, "./predicted_medal_table_rounded.csv", row.names = FALSE)
+write.csv(pred.medal.table, "./predicitons/predicted_medal_table.csv", row.names = FALSE)
+write.csv(pred.medal.table.rounded, "./predictions/rounded_predicted_medal_table.csv", row.names = FALSE)
+write.csv(pred.medal.table.rounded.pos, "./predictions/pos_rounded_predicted_medal_table.csv", row.names = FALSE)
