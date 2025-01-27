@@ -162,9 +162,8 @@ The loss function was chosen to be \textit{Binary Cross Entropy} (also known as 
 \begin{equation}\label{eq:binary crossentropy}
     \text{BCE} = -\frac{1}{N}\sum_{i=0}^{N}\left [y_i \log(p_i) +(1-y_i)\log(1-p_i)\right]
 \end{equation}
-
-\begin{table}[H]
-\caption{Variable definition for eqn~(\ref{eq:binary crossentropy})}
+\begin{table}[!htbp]
+\caption{Variable definition for Equation~(\ref{eq:binary crossentropy})}
 \centering
 \vspace{5pt}
 \begin{tabularx}{\textwidth} {
@@ -179,9 +178,9 @@ The loss function was chosen to be \textit{Binary Cross Entropy} (also known as 
  \end{tabularx}
 \end{table}
 
-\subsubsection{Results}
+\subsubsection{Model Performance}
 
-Full results of ANN predictions may be found in Section~\ref{RestultsIntegration}. This section will be dedicated to providing the results for the ANN itself. The ANN used $n=50$ epochs for training, to ensure maximum accuracy of the model and minimize the risk of potential overfitting. The final values for key metrics are shown in the table below.
+Full results of ANN predictions may be found in Section~\ref{sec:results-integration}. This section will be dedicated to providing the results for the ANN itself. The ANN used $n=50$ epochs for training, to ensure maximum accuracy of the model and minimize the risk of potential overfitting. The final values for key metrics are shown in the table below.
 
 \begin{table}[H]
 \caption{Key ANN metrics}
@@ -282,9 +281,9 @@ F Statistic (df = 10; 1034) & 294.449$^{***}$ & 327.359$^{***}$ & 353.092$^{***}
 
 We see that nearly all of our predictors have very small p-values, meaning nearly all of them are significant, including the metrics related to sports and events. The only exception is \texttt{Silver.Last.Olympics}, which shows the opposite effect---its p-values are very large, indicating that the number of silver medals a country has is. When analyzing our correlations, we focus only the model with the total number of medals as the dependent variable to reduce redundancy, as our analyses were identical for all models. 
 
-\subsubsection{Multicollinearity}
+\subsubsection{Multicollinearity}\label{ssec:vif}
 
-Measuring multicollinearity in each predictor is important to determine how independent their effects are on the full model. If a given predictor is multicollinear, it is common for it to have a small p-value in a MLR model, but a small p-value in a SLR model, or vice versa. We measure multicollinearity using Variance Inflation Factors (VIF). The functionality to calculate this is provided by the R package \texttt{cars}. The VIFs for each predictor from each model is given below. Note that We only show the VIF values for the model of total medals because the respective values for the predictors in the other models are nearly identical. See \href{https://github.com/YanxiangShan/MCM-2524908/blob/main/code/MLR/vifs.csv}{\texttt{vifs.csv}} for the full table with data for all models, or \href{https://github.com/YanxiangShan/MCM-2524908/blob/main/code/MLR/vifs.csv}{\texttt{vif\_diffs.csv}} for the difference between all VIFs and the VIFs from the Total column.
+Measuring multicollinearity in each predictor is important to determine how independent their effects are on the full model. If a given predictor is multicollinear, it is common for it to have a small p-value in a MLR model, but a small p-value in a SLR model, or vice versa. We measure multicollinearity using Variance Inflation Factors (VIF). The functionality to calculate this is provided by the R package \texttt{cars}. The VIFs for each predictor from each model is given below. Note that We only show the VIF values for the model of total medals because the respective values for the predictors in the other models are nearly identical. See \href{https://github.com/YanxiangShan/MCM-2524908/blob/main/code/MLR/analysis/vifs.csv}{\texttt{vifs.csv}} for the full table with data for all models, or \href{https://github.com/YanxiangShan/MCM-2524908/blob/main/code/MLR/analysis/vifs.csv}{\texttt{vif\_diffs.csv}} for the difference between all VIFs and the VIFs from the Total column.
 
 % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
 % Date and time: Mon, Jan 27, 2025 - 3:58:41 PM
@@ -378,15 +377,15 @@ Using a level $\alpha=0.05$ for this test, we see that each predictor has consta
 
 \subsubsection{Influential points}
 
-According to DFFITS, we found 12 influential points; according to Cook's Distance, we found 4 influential points; finally, according to DFBETAS, we found 20 influential points.
+According to DFFITS, we found 12 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/DFFITS.csv}{\texttt{DFFITS.csv}}); according to Cook's Distance, we found 4 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/cooks_distance.csv}{\texttt{cooks\_distance.csv}}); finally, according to DFBETAS, we found 20 influential points.
 
-\section{Results Integration}\label{RestultsIntegration}
-\subsection{Determination evaluation indicators}
-The final predictions obtained by the two methods above and the distribution of these data are shown in the table below:
+\section{Results Integration}\label{sec:results-integration}
+
+The projected medal table for the 2028 Olympics from both models is given in the table below. Note that in the predictions, the Total represents the sum of Bronze, Silver, and Gold columns, and the columns are rounded after summing. Thus, the displayed medals do not always sum to the total.
 
 \begin{table}[H]
 \centering 
-\caption{Predicted Total Medals Earned of Each Country in 2028 Olympic Game}
+\caption{Predicted 2028 Olympics Medal Table}
 \label{A}
 \vspace{5pt}
 \begin{tabular}{l|cccc|cccc}
@@ -411,21 +410,9 @@ Botswana      & 0 & 0 & 0 & 0   & 0 & 0 & 0 & 0 \\
 \end{tabular}
 \end{table}
 
-Note that in the MLR predictions, the total column was predicted independently
-
-We note the following in 
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.95\textwidth]{myplot} % 直接写图片名字，不需要后缀
-  \caption{Distributions of Total Medals Earned of These Two Method }
-  \label{exampleId}
-\end{figure}
-However, due to the differences of these two algorithms, many differences exist between the values obtained.
-
 The prediction of the neural network was standardized relative to the number of disciplines projected to be in the 2028 Olympics. Clearly, if more events are in a given Olympic, the higher the total number of medals will be, and therefore the total number of medals won by each team will be greater. Since the events and teams for the 2028 Olympics have not yet been published, we were forced to make assumptions regarding these metrics. For the medal predictions, the values were adjusted based on the number of events we assume will happen in 2028, which we took to be the exact same as in 2024. The model does account, however, for a differing number of disciplines, and can be parsed into the function to change to predictions.
 
-To solve the problem of differences in the data obtained from different methods, we need to use particular methods to combine these outcomes to get the results. To do this, we adapt the entropy-weighted method to calculate the synthetic result.
+However, due to the differences of these two algorithms, many differences exist between the values obtained. To solve the problem of differences in the data obtained from different methods, we need to use particular methods to combine these outcomes to get the results. To do this, we adapt the entropy-weighted method to calculate the synthetic result.
 
 \subsection{Entropy Weight Method Model}
 The entropy-weighted model is an evaluation model that determines the weights of various indicators based on the differences in the information contained in each indicator and combines the rankings derived from the proximity to the ideal solution. The specific operational flow chart is as follows:
@@ -448,7 +435,14 @@ The entropy-weighted model is an evaluation model that determines the weights of
 \caption{Flowchart of The Process of EWM}
 \label{fig:flowchart}
 \end{figure}
-In most previous competitions, most countries did not win any medals, and only very few countries gained the most, which looks like a Gamma distribution. Thus, the criteria to determine which result is more likely to be correct is to see which results about the total medals gained by each country match the Gamma distribution.\\
+In most previous competitions, most countries did not win any medals, and only very few countries gained the most, which looks like a Gamma distribution, as the figure shown below:\\
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{myplot} % 直接写图片名字，不需要后缀
+  \caption{Distributions of Total Medals Earned of These Two Method }
+  \label{exampleId}
+\end{figure}
+Thus, the criteria to determine which result is more likely to be correct is to see which results about the total medals gained by each country match the Gamma distribution.\\
 \begin{equation}\label{eq:1}
 f(x;k,\theta) =\frac{1}{\Gamma(k) \theta^k}x^{k-1}e^{-\frac{x}{\theta}}.
 \end{equation}
@@ -562,31 +556,35 @@ We use this to derive the final medals earned for each country as show in the ta
 \begin{table}[H]
 \centering 
 \label{c}
-\caption{Medals Earned from Each Country in 2028 Olympic Game}
+\caption{Medals Earned from Each Country in the 2028 Olympics}
 \vspace{5pt}
-\begin{tabularx}{\textwidth} {
-  >{\raggedright\arraybackslash}X 
-  >{\raggedright\arraybackslash}X  
-  >{\raggedright\arraybackslash}X
-  >{\raggedright\arraybackslash}X  
-  >{\raggedright\arraybackslash}X  }
- \hline
-\textbf{Name of the country} & \textbf{Total medal earned} & \textbf{Gold medal earned} & \textbf{Silver medal earned} & \textbf{Bronze medal earned}\\
-\hline\hline
-United States & 131 & 0\\
-China & 40 & \\
-France & 53 & \\
-Italy & 33 & \\
-German & 33 &\\
-$\vdots$ & $\vdots$ & $\vdots$\\
-Egypt & 3 &\\
-Tajikistan & 1 &\\
-Qatar & 0 &\\
-Bostwana & 0 &\\
+\begin{tabular}{lcccc}
 \hline
-\end{tabularx}
+\textbf{Country} & \textbf{Bronze} & \textbf{Silver} & \textbf{Gold} & \textbf{Total}\\
+\hline\hline
+United States & 0 & 0 & 0 & 131 \\
+China         & 0 & 0 & 0 & 40 \\
+France        & 0 & 0 & 0 & 53 \\
+Italy         & 0 & 0 & 0 & 33 \\
+German        & 0 & 0 & 0 & 33 \\
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+Egypt         & 0 & 0 & 0 & 3 \\
+Tajikistan    & 0 & 0 & 0 & 1 \\
+Qatar         & 0 & 0 & 0 & 0 \\
+Botswana      & 0 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
 \end{table}
 
+\subsection{New Medalists}
+
+There were no new medalists.
+
+\section{Model Insights}
+
+\subsection{Relationship between Events and Medals}
+
+\subsection{``Great Coach`` Effect}
 
 \section{Conclusions}
 In this model, we construct two models to predict the total score of each country. After weighing the results of these two models, we obtain an integrated result, as shown in the table.10, the United States will win the most medals, 131., and then, the following countries, France, China, Itlay, and Germany, will win 53, 40, 33, and 33 medals. If we count the number of gold medal gained by each country, then the result will change to 
