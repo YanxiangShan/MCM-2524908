@@ -31,13 +31,17 @@
  \usepackage[utf8]{inputenc}
  \usepackage{palatino}
   %\usepackage{txfonts}
+\usepackage{enumitem}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{tabularx}
 \graphicspath{ {./figures/} }
 \usepackage{indentfirst}  %首行缩进，注释掉，首行就不再缩进。
-\usepackage{lipsum}
+\usepackage{csquotes}
+\usepackage{longtable}
 \usepackage{tikz}
+\usepackage[backend=biber, style=authoryear]{biblatex}
+\addbibresource{refs.bib}
 \usetikzlibrary{shapes.geometric, arrows}
 \tikzstyle{startstop} = [rectangle, rounded corners, text centered, draw=black, fill=red!30]
 \tikzstyle{process} = [rectangle, text centered, draw=black, fill=blue!30]
@@ -61,7 +65,9 @@
 
 %\textbf{Follow us @COMAPMath on Twitter or COMAPCHINAOFFICIAL on Weibo for the
 %most up to date contest information.}
-
+\begin{Abstract}
+In this paper, we construct several models to predict the success of the 2028 Los Angeles Olympic Games. Our dataset contains the total scores for nearly 1000 countries and regions from 1896 to 2024. We built an artificial neural network model and a multiple linear regression model to predict the results of the 2028 Olympic Games, and then, we used the entropy-weighted method to integrate these two different outcomes to gain the synthetic results. 
+\end{Abstract}
 \begin{keywords}
 Multiple Linear Regression; Neural Network; Entropy-weighted Method
 \end{keywords}
@@ -189,42 +195,193 @@ Full results of ANN predictions may be found in Section~\ref{RestultsIntegration
 
 Although it is not possible to fully understand how the neural network learned the data, the four above metrics give insight into its workings on both training and validation (testing) data. Looking at the training metrics first, it becomes clear the model handles seen data exceptionally well, with an extremely high training accuracy and very low training loss. Usually, this means the neural network is extremely well trained. In this case, however, it may point towards overfitting, since the winners of events are (somewhat) random. Having a $0.9976$ and $0.0173$ training accuracy and loss on a slightly random data set is a first indication of overfitting in the model. However, the ANN still fairs well with data it has not yet seen, as evidenced by the relatively high validation accuracy. The increase in loss value from training to validation does support the overfitting hypothesis, however it is well within accepted ranges for well trained neural networks, meaning the predictions of the ANN may be accepted as valid.
 
-\subsection{Multiple Linear Regression}
+\subsection{Multiple Linear Regression}\label{sec:mlr}
 
-\subsubsection{Data Processing}
+Since ANNs are designed for non-linear data and trends (due to non-linear activation functions), we thought it best to also model the given data in a way that could capture any linearity in the structure of our given data or within any trends in the data. Previous work that we on using linear regression to make predictions about the Olympics made use of data that was not available in our dataset, such as socioeconomic metrics like as GDP and HDI~\parencite{reg:2009}, and details on athletes like height and weight~\parencite{reg:2024}. Since we did not have access to this kind of data in this problem, we instead tested for correlations between each country's medal counts (bronze, silver, gold, and total) and the following parameters:
+
+\begin{description}[style=nextline,font=\normalfont]
+    \item[\texttt{Athletes}] Number of athletes that competed for the country.
+    \item[\texttt{Sports}] Number of sports that the country participated in.
+    \item[\texttt{Events}] Number of events that the country participated in.
+    \item[\texttt{Is.host}] A flag that is 1 if the country is the host, and 0 otherwise.
+    \item[\texttt{Mean.Sex}] For each country's athletes in a given year, we set their sex to 0 if they were female and 1 if they were male. \texttt{Mean.Sex} gives the mean of these values. Thus, the higher this predictor, the larger the percentage of athletes was male.
+    \item[\texttt{Mean.Sport.Participation}] For each year, we made a dictionary that counted the number of countries that competed in given sports. For each country in a given year, we indexed this dictionary only at the sports that this country participated in, and took the mean of the corresponding values. Intuitively, this could be thought of as the \enquote{mean popularity} of the sports that this country participated in for this year.
+    \item[\texttt{Mean.Event.Participation}] Same as \texttt{Mean.Sport.Participation}, only with events.
+    \item[\texttt{Bronze.Last.Olympics}] Number of Bronze medals won in the last year. 
+    \item[\texttt{Silver.Last.Olympics}] Number of Silver medals won in the last year. 
+    \item[\texttt{Gold.Last.Olympics}] Number of Gold medals won in the last year. 
+\end{description}
+
+The full table containing all of these parameters for each country in each year can be found in \href{https://github.com/YanxiangShan/MCM-2524908/blob/main/code/MLR/processed_data.csv}{\texttt{processed\_data.csv}}, and the code that generated this table can be found in \href{https://github.com/YanxiangShan/MCM-2524908/blob/main/code/MLR/process_data.R}{\texttt{process\_data.R}}. As a final note with respect to the data, we found 20 outliers in the data that are \enquote{extreme} with respect to the dependent variable according to studentized deleted residuals, and none that are \enquote{extreme} with respect to any independent variables according to the hat values metric.
+
+Using these parameters and their respective data, we constructed four multiple linear regression models, one for each medal type and another for total medals\footnote{
+    All tables in section~\ref{sec:mlr} generated by the \texttt{stargazer} package~\parencite{hlavac2022stargazer} from R.
+}:
+
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: Mon, Jan 27, 2025 - 1:21:57 AM
+\begin{longtable}{@{\extracolsep{5pt}}lcccc} 
+\caption{Full MLR Models}\label{tbl:full}
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & Bronze & Silver & Gold & Total \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ Athletes & 0.042$^{***}$ & 0.049$^{***}$ & 0.043$^{***}$ & 0.133$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
+  & & & & \\ 
+ Sports & $-$0.147$^{***}$ & $-$0.117$^{***}$ & $-$0.112$^{***}$ & $-$0.376$^{***}$ \\ 
+  & p = 0.0001 & p = 0.002 & p = 0.007 & p = 0.0002 \\ 
+  & & & & \\ 
+ Events & $-$0.021$^{***}$ & $-$0.049$^{***}$ & $-$0.045$^{***}$ & $-$0.115$^{***}$ \\ 
+  & p = 0.006 & p = 0.000 & p = 0.00000 & p = 0.00000 \\ 
+  & & & & \\ 
+ Is.host & 1.764$^{*}$ & 4.001$^{***}$ & 7.724$^{***}$ & 13.489$^{***}$ \\ 
+  & p = 0.051 & p = 0.00001 & p = 0.000 & p = 0.00000 \\ 
+  & & & & \\ 
+ Mean.Sex & $-$2.494$^{***}$ & $-$2.639$^{***}$ & $-$2.802$^{***}$ & $-$7.936$^{***}$ \\ 
+  & p = 0.004 & p = 0.002 & p = 0.004 & p = 0.001 \\ 
+  & & & & \\ 
+ Mean.Sport.Participation & $-$0.001$^{***}$ & $-$0.001$^{**}$ & $-$0.001$^{*}$ & $-$0.002$^{**}$ \\ 
+  & p = 0.006 & p = 0.045 & p = 0.082 & p = 0.014 \\ 
+  & & & & \\ 
+ Mean.Event.Participation & $-$0.003$^{**}$ & $-$0.004$^{***}$ & $-$0.002$^{**}$ & $-$0.009$^{***}$ \\ 
+  & p = 0.016 & p = 0.002 & p = 0.049 & p = 0.005 \\ 
+  & & & & \\ 
+ Bronze.Last.Olympics & 0.170$^{***}$ & 0.115$^{***}$ & 0.009 & 0.294$^{***}$ \\ 
+  & p = 0.00005 & p = 0.005 & p = 0.839 & p = 0.010 \\ 
+  & & & & \\ 
+ Silver.Last.Olympics & $-$0.003 & 0.015 & 0.006 & 0.018 \\ 
+  & p = 0.957 & p = 0.749 & p = 0.907 & p = 0.885 \\ 
+  & & & & \\ 
+ Gold.Last.Olympics & 0.262$^{***}$ & 0.353$^{***}$ & 0.621$^{***}$ & 1.235$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
+  & & & & \\ 
+ Constant & 4.131$^{***}$ & 4.158$^{***}$ & 3.909$^{***}$ & 12.198$^{***}$ \\ 
+  & p = 0.00004 & p = 0.00003 & p = 0.001 & p = 0.00001 \\ 
+  & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 1,045 & 1,045 & 1,045 & 1,045 \\ 
+R$^{2}$ & 0.740 & 0.760 & 0.773 & 0.803 \\ 
+Adjusted R$^{2}$ & 0.738 & 0.758 & 0.771 & 0.801 \\ 
+Residual Std. Error (df = 1034) & 3.673 & 3.627 & 4.139 & 10.005 \\ 
+F Statistic (df = 10; 1034) & 294.449$^{***}$ & 327.359$^{***}$ & 353.092$^{***}$ & 421.681$^{***}$ \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{longtable} 
+
+We see that nearly all of our predictors have very small p-values, meaning nearly all of them are significant, including the metrics related to sports and events. The only exception is \texttt{Silver.Last.Olympics}, which shows the opposite effect---its p-values are very large, indicating that the number of silver medals a country has is. When analyzing our correlations, we focus only the model with the total number of medals as the dependent variable to reduce redundancy, as our analyses were identical for all models. 
+
+\subsubsection{Multicollinearity}
+
+Measure multicollinearity in each predictor is important to determine how independent their effects are on the full model. We measure multicollinearity using Variance Inflation Factors (VIF)---the VIFs for each predictor from each model is given below\footnote{We only show the VIF values for the model of total medals because the respective values for the predictors in the other models are nearly identical. See}:
+
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: Mon, Jan 27, 2025 - 3:58:41 PM
+\begin{longtable}{@{\extracolsep{5pt}} l|c} 
+  \caption{VIF values for each predictor in the total model} 
+  \label{} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Predictor & VIF \\ 
+\hline
+Athletes & $12.654$ \\ 
+Sports & $6.685$ \\ 
+Events & $14.315$ \\ 
+Is.host & $1.524$ \\ 
+Mean.Sex & $1.798$ \\ 
+Mean.Sport.Participation & $1.440$ \\ 
+Mean.Event.Participation & $1.329$ \\ 
+Bronze.Last.Olympics & $6.252$ \\ 
+Silver.Last.Olympics & $8.385$ \\ 
+Gold.Last.Olympics & $6.850$ \\ 
+\hline
+\end{longtable} 
+
+We usually note that a predictor exhibits multicollinearity if its VIF value  we see the values for \texttt{Athletes} and \texttt{Events} exceeded 10, indicating multicollinearity in these particular parameters, but none others. This indicates that the results when testing the correlation between \texttt{Total} and these parameters may be different than when they are tested together with all other parameters. Testing these parameters individually gives the following results:
+
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: Mon, Jan 27, 2025 - 2:09:47 AM
+\begin{longtable}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & \multicolumn{2}{c}{Total} \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ Sports & 1.390$^{***}$ &  \\ 
+  & p = 0.000 &  \\ 
+  & & \\ 
+ Events &  & 0.259$^{***}$ \\ 
+  &  & p = 0.000 \\ 
+  & & \\ 
+ Constant & $-$6.570$^{***}$ & $-$4.901$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 \\ 
+  & & \\ 
+\hline \\[-1.8ex] 
+Observations & 1,419 & 1,419 \\ 
+R$^{2}$ & 0.270 & 0.452 \\ 
+Adjusted R$^{2}$ & 0.270 & 0.452 \\ 
+Residual Std. Error (df = 1417) & 18.448 & 15.983 \\ 
+F Statistic (df = 1; 1417) & 525.181$^{***}$ & 1,170.515$^{***}$ \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{longtable} 
+
+We see that with respect to p-values, these predictors are still relevant. 
+
+% This is further supported by running a backwards selection algorithm on the full model, which elects only to eliminate the \texttt{Silver.Last.Olympics} predictor according to AIC, which possesses the highest p-value of all of the parameters by far (we do not use this model when making predictions in further sections).
+
+\subsubsection{Error Variance}
+
+Conducting a Modified Levene Test (See Appendix \ref{ap:mlt} for details) on each predictor in the Total model, gave the following results:
+
+we found that each predictor has constant variance except for \texttt{Bronze.Last.Olympics}, \\ \texttt{Silver.Last.Olympics}, and \texttt{Gold.Last.Olympics}. Finally, according to DFFITS, we found 12 influential points; according to Cook's Distance, we found 4 influential points; finally, according to DFBETAS, we found 20 influential points.
 
 \section{Results Integration}\label{RestultsIntegration}
 \subsection{Determination evaluation indicators}
-The final predictions obtained by the two methods above are shown in the table below:
+The final predictions obtained by the two methods above and the distribution of these data are shown in the table below:
 \begin{table}[H]
 \centering 
 \label{A}
- \caption{Medals Earned of Each Country in 2028 Olympic Game}
+ \caption{Predicted Total Medals Earned of Each Country in 2028 Olympic Game}
 \vspace{5pt}
-\begin{tabular}{lcc}
+\begin{tabular}{lcccc}
 \hline
-\textbf{Name of Country} & \textbf{Artificial Neural Network} & \textbf{Multiple Linear Regression} \\
+\textbf{Name of Country} & 
+\multicolumn{2}{c}{\textbf{Artificial Neural Network}} &
+\multicolumn{2}{c}{\textbf{Multiple Linear Regression}} \\
+\cline{2-5}
+& Gold & Total & Gold & Total \\
 \hline\hline
-United States & 144 & A\\
-Great Britain & 60 & A\\
-France & 42 & A\\
-Italy & 28 & A\\
-Germany & 23 & A\\ 
-$\vdots$ & $\vdots$ & $\vdots$\\ 
-Democratic Republic of the Congo & 0 & A\\
-Wales & 0 & A\\
-South Sudan & 0 & A\\
-North Macedonia & 0 & A\\ 
+United States & 0 & 144 & 0 & 117 \\
+China & 0 & 8 & 0 & 74 \\
+France & 0 & 42 & 0 & 66 \\
+Italy & 0 & 28 & 0 & 38 \\
+Germany & 0 & 23 & 0 & 43 \\ 
+$\vdots$ & $\vdots$ & $\vdots$ \\ 
+Egypt & 0 & 2 & 0 & 5 \\
+Tajikistan & 0 & 0 & 0 & 3 \\
+Qatar & 0 & 0 & 0 & 0\\
+Botswana & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{table}
-\begin{figure}[h]
+
+We note the following in 
+
+\begin{figure}[H]
   \centering
-  \includegraphics[example-image-a]{1} % 直接写图片名字，不需要后缀
-  \caption{Distributions of medals earned of this two method }
+  \includegraphics[width=0.95\textwidth]{myplot} % 直接写图片名字，不需要后缀
+  \caption{Distributions of Total Medals Earned of These Two Method }
   \label{exampleId}
 \end{figure}
-However, due to the differences of these two algorithm, there are many differences exist between the values obtained by different method. 
+However, due to the differences of these two algorithms, many differences exist between the values obtained.
 
 The prediction of the neural network was standardized relative to the number of disciplines projected to be in the 2028 Olympics. Clearly, if more events are in a given Olympic, the higher the total number of medals will be, and therefore the total number of medals won by each team will be greater. Since the events and teams for the 2028 Olympics have not yet been published, we were forced to make assumptions regarding these metrics. For the medal predictions, the values were adjusted based on the number of events we assume will happen in 2028, which we took to be the exact same as in 2024. The model does account, however, for a differing number of disciplines, and can be parsed into the function to change to predictions.
 
@@ -251,7 +408,7 @@ The entropy-weighted model is an evaluation model that determines the weights of
 \caption{Flowchart of The Process of EWM}
 \label{fig:flowchart}
 \end{figure}
-In most previous competitions, most countries didn`t win any medals, and only very few countries gained the most medals, which looks like a Gamma distribution. Thus, the criteria to determine which result is more likely to be correct is to see which results match the Gamma distribution.\\
+In most previous competitions, most countries did not win any medals, and only very few countries gained the most, which looks like a Gamma distribution. Thus, the criteria to determine which result is more likely to be correct is to see which results about the total medals gained by each country match the Gamma distribution.\\
 \begin{equation}\label{eq:1}
 f(x;k,\theta) =\frac{1}{\Gamma(k) \theta^k}x^{k-1}e^{-\frac{x}{\theta}}.
 \end{equation}
@@ -263,12 +420,23 @@ The $x_i$ in(\ref{K}) is the number of medals a particular country gains under a
 \begin{table}[H]
 \centering 
 \label{A}
-\caption{Data about medals earned after positive transformation}
+\caption{Data about total medals earned after positive transformation}
 \vspace{5pt}
 \begin{tabular}{lcc}
 \hline
 \textbf{Name of the Country} & \textbf{Artificial Neural Network} & \textbf{Multiple Linear Regression} \\
 \hline\hline
+United States & 0 & 0\\
+China & $4.06\times 10^{-1}$  & $4.18\times 10^{-13}$\\
+France & $4.64\times 10^{-7}$ & $2.23\times 10^{-10}$\\
+Italy & $3.17\times 10^{-4}$ & $7.82\times 10^{-6}$\\
+German & $3.02\times 10^{-3}$ & $2.89\times 10^{-7}$\\
+$\vdots$ & $\vdots$ & $\vdots$ \\ 
+Egypt & $9.99\times 10^{-1}$ & $5.57\times 10^{-1}$\\
+Kajikkistan & $8.24\times 10{-1}$ & $9.99\times 10^{-1}$\\
+Qatar & $8.24\times 10{-1}$ & $8.24\times 10{-1}$\\
+Botswana & $8.24\times 10{-1}$ & $8.24\times 10{-1}$\\
+\hline
 \end{tabular}
 \end{table}
 After the positive transformation, we need to normalize the data by using the formula below:\\
@@ -341,6 +509,8 @@ The entropy-weighted method was coded in Python 3.12.6 with data analysis librar
 \hline
 \textbf{Artificial Neural Network} & \textbf{Multiple Linear Regression} \\
 \hline\hline
+0.52277079 & 0.47722921\\
+\hline
 \end{tabularx}
 \end{table}
 Based on the composite weights, we calculate the weighted average of the medaas earned obtained by different methods for the same country:
@@ -352,29 +522,32 @@ We use this to derive the final medals earned for each country as show in the ta
 \begin{table}[H]
 \centering 
 \label{c}
-\caption{Medals Earned from Each Country}
+\caption{Medals Earned from Each Country in 2028 Olympic Game}
 \vspace{5pt}
 \begin{tabularx}{\textwidth} {
   >{\raggedright\arraybackslash}X 
-  >{\raggedright\arraybackslash}X  }
+  >{\raggedright\arraybackslash}X  
+  >{\raggedright\arraybackslash}X }
  \hline
-\textbf{Name of the country} & \textbf{Medals earned} \\
+\textbf{Name of the country} & \textbf{Total Medals earned} & \textbf{Gold medal earned}\\
 \hline\hline
+United States & 131 & 0\\
+China & 40 & \\
+France & 53 & \\
+Italy & 33 & \\
+German & 33 &\\
+$\vdots$ & $\vdots$ & $\vdots$\\
+Egypt & 3 &\\
+Tajikistan & 1 &\\
+Qatar & 0 &\\
+Bostwana & 0 &\\
+\hline
 \end{tabularx}
 \end{table}
 
 
-
-
-
-
-\section{Validating the Model}
-
-
 \section{Conclusions}
-
-
-
+In this model, we construct two models to predict the total score of each country. After weighing the results of these two models, we obtain an integrated result, as shown in the table.10, the United States will win the most medals, 131., and then, the following countries, France, China, Itlay, and Germany, will win 53, 40, 33, and 33 medals. If we count the number of gold medal gained by each country, then the result will change to 
 
 \section{Evaluation of the Model}
 Certain features of the models used in this paper work better for different questions one may have regarding the 2028 Olympics medal distribution. In truth, a combination of the ANN and MLR is useful for a more rounded overall model. While certain predictions are consistent across both models, there are crucial differences which make one better than the other in certain aspects. For example, the ANN model predicts that no new countries will win a medal in the 2028 Olympics, and it is quite easy to understand why. The model has learned that over the span of 128 years and 32 Summer Olympic Events, a particular country has not won once. On the basis of that knowledge, there is no reason why it should suggest that suddenly a country may win a medal. In this case, the linear regression model reigns supreme, as it operates on an entirely different basis, as does not fall short to the situation described above. Conversely, finding relationships of specific variables, rather than entire datasets, the MLR model is able to more accurately predict whether a country will win its first medal based on its attributes. Another consequence of the ANN learning entire data sets is a possible erroneous prediction of certain team medals. For instance, China has taken part in merely 11 Olympics, as opposed to the United States which took part in almost 30. This results in the ANN assigning China 0 medals for all Olympics it had not participated in, reinforcing a notion that China's recent successes a merely a fluke, not replicable in future events. Again, in such situations the MLR has an advantage over the ANN. The ANN model works better for conclusions requiring a view on the whole set of data, such as the influence of \textit{Host Advantage}. The MLR tries to account for this metric, but finds very little correlation, since it bases its predictions on only 1 Summer Olympic prior. This may explain the reason for a bigger discrepancy for the number of medals won by the United States than for any other country - perhaps the ANN found support for Host Advantage playing a role, and predicts the United States, as a host of the 2028 Los Angeles Olympics, will earn more medals. Many such differences exist between the two models, which is why we elected to construct both in harmony with each other. Their collective predictions should be a much more trust-worthy metric, as compared to both models in solitude.
@@ -387,24 +560,35 @@ Certain features of the models used in this paper work better for different ques
 \end{itemize}
 
 \subsection{Weaknesses}
+
 \begin{itemize}
 \item {Gamma distribution might not be able to exactly describe the distribution of the medals earned of each country}
 \item {The ANN model takes into account all historical data, and sometimes predicts countries like the Soviet Union, Yugoslavia or Czechoslovakia as a possible winner. While the model ranks these countries very low, it ranks them nonetheless, meaning it may in theory predict that a non-existent country will win a medal, which is impossible.}
-\item \\
+\item 
 
-\item \\
+\item 
 
 \end{itemize}
 
-\begin{thebibliography}{99}
-
-\end{thebibliography}
+\printbibliography
 
 \begin{appendices}
 
-\section{First appendix}
+\section{Modified Levene Test (Brown-Forsythe)}\label{ap:mlt}
 
-\section{Second appendix}
+This test is performed to identify non-constant error variances. First, the linear regression model is fit, then residuals $e_i$ are calculated. Then, we split sample into $g$ groups, typically $g = 2$. Set group 1 to the residuals of the $n_1$ lowest values of the predictor $X$, set group 2 to the residuals of the $n_2$ highest values of the predictor $X$. We then set up the test as follows:
+\[
+	H_0 : \text{variance is constant}, \quad H_a : \text{variance is not constant}.
+\]
+Calculate $d_{i1} = |e_{i1} - \tilde{e}_{1}|$ for group 1 and $d_{i2} = |e_{i2} - \tilde{e}_{2}|$ for group 2, etc., where $e_{ij}$ is the $i$th residual of the $j$th group and $\tilde{e}_j$ is the median residual of the $j$th group. Finally, conduct a level-$\alpha$ two sample $t$-test with $d_{ij}$ using the test statistic
+\[
+t^* = \frac{d_{i1} - d_{i2}}{s\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},
+\]
+where
+\[
+s^2 = \frac{\sum (d_{i1} - \bar{d_1})^2 + \sum (d_{i2} - \bar{d_2})^2}{n-2}
+\]
+is the pooled variance. We reject $H_0$ if $|t^*| > t\left( 1-\frac{\alpha}{2} ; n - 2 \right)$, where $t\left( 1-\frac{\alpha}{2} ; n - 2 \right)$ is the $1-\frac{\alpha}{2}$ quantile of the student's t-distribution.
 
 \end{appendices}
 
