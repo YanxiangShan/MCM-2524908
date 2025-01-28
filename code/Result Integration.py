@@ -67,17 +67,15 @@ if np.sum(d_j) == 0:
 
 w = d_j / np.sum(d_j)
 
-print("the weight of each method is :", w)
+print("the weight of these two method are:",w)
+data = np.loadtxt('Total_Test.csv', delimiter=',')
 
-medal_earn=np.zeros_like(normalized)
-print("the data table is:", data)
+first_group = data[:, 0:4]  
+second_group = data[:, 4:8]  
 
-for i in range(data.shape[0]):
-    for j in range(data.shape[1]):
-        #print(medal_earn)
-        medal_earn[i,j]+=data[i,j]*w[j]
+weighted_first_group = first_group * w[0]
+weighted_second_group = second_group * w[1]
 
-results = np.sum(medal_earn, axis=1).reshape(-1, 1)
+result = weighted_first_group + weighted_second_group
 
-print("the final result about the medal earned of each country in 2028 Olynpic game is: ", results)
-
+print("the final result about the medal earned of each country in 2028 Olynpic game is: ", result)
