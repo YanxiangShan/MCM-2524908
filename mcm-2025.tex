@@ -73,7 +73,7 @@
 %\textbf{Follow us @COMAPMath on Twitter or COMAPCHINAOFFICIAL on Weibo for the
 %most up to date contest information.}
 \begin{Abstract}
-In this paper, we construct several models to predict the success of the 2028 Los Angeles Olympic Games. Our dataset contains the total scores for nearly 1000 countries and regions from 1896 to 2024. We built an artificial neural network model and a multiple linear regression model to predict the results of the 2028 Olympic Games, and then, we used the entropy-weighted method to integrate these two different outcomes to gain the synthetic results. 
+In this paper, we construct several models to predict the success of the 2028 Los Angeles Olympic Games. Our dataset contains the total scores for nearly 1000 countries and regions from 1896 to 2024. We built an artificial neural network model and a multiple linear regression model to predict the results of the 2028 Olympic Games. Then, we used the entropy-weighted method to integrate these two different outcomes to gain the synthetic results. We also find the relationship between the events and the number of medals gained and compare the performance of each country in the 2024 Olympic Games and their performance in the 2028 Olympic Games to determine which country will perform better and which country will perform worse.
 \end{Abstract}
 \begin{keywords}
 Multiple Linear Regression; Neural Network; Entropy-weighted Method
@@ -225,9 +225,10 @@ Using these parameters and their respective data, we constructed four multiple l
 }:
 
 % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
-% Date and time: Mon, Jan 27, 2025 - 1:21:57 AM
+% Date and time: Mon, Jan 27, 2025 - 6:37:41 PM
 \begin{longtable}{@{\extracolsep{5pt}}lcccc} 
-\caption{Full MLR Models}\label{tbl:full}
+  \caption{Full MLR Model} 
+  \label{} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
  & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
@@ -235,51 +236,125 @@ Using these parameters and their respective data, we constructed four multiple l
 \\[-1.8ex] & Bronze & Silver & Gold & Total \\ 
 \\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
 \hline \\[-1.8ex] 
- Athletes & 0.042$^{***}$ & 0.049$^{***}$ & 0.043$^{***}$ & 0.133$^{***}$ \\ 
+ Constant & 3.850$^{***}$ & 3.875$^{***}$ & 3.681$^{***}$ & 11.406$^{***}$ \\ 
+  & p = 0.0001 & p = 0.0001 & p = 0.002 & p = 0.00002 \\ 
+  & & & & \\ 
+ Athletes & 0.034$^{***}$ & 0.042$^{***}$ & 0.039$^{***}$ & 0.115$^{***}$ \\ 
   & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
   & & & & \\ 
- Sports & $-$0.147$^{***}$ & $-$0.117$^{***}$ & $-$0.112$^{***}$ & $-$0.376$^{***}$ \\ 
-  & p = 0.0001 & p = 0.002 & p = 0.007 & p = 0.0002 \\ 
+ Sports & $-$0.154$^{***}$ & $-$0.121$^{***}$ & $-$0.109$^{***}$ & $-$0.384$^{***}$ \\ 
+  & p = 0.00002 & p = 0.001 & p = 0.008 & p = 0.0001 \\ 
   & & & & \\ 
- Events & $-$0.021$^{***}$ & $-$0.049$^{***}$ & $-$0.045$^{***}$ & $-$0.115$^{***}$ \\ 
-  & p = 0.006 & p = 0.000 & p = 0.00000 & p = 0.00000 \\ 
+ Events & $-$0.003 & $-$0.034$^{***}$ & $-$0.038$^{***}$ & $-$0.075$^{***}$ \\ 
+  & p = 0.684 & p = 0.00002 & p = 0.00002 & p = 0.0004 \\ 
   & & & & \\ 
- Is.host & 1.764$^{*}$ & 4.001$^{***}$ & 7.724$^{***}$ & 13.489$^{***}$ \\ 
-  & p = 0.051 & p = 0.00001 & p = 0.000 & p = 0.00000 \\ 
+ Is.host & 21.610$^{***}$ & 21.297$^{***}$ & 17.014$^{***}$ & 59.920$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
   & & & & \\ 
- Mean.Sex & $-$2.494$^{***}$ & $-$2.639$^{***}$ & $-$2.802$^{***}$ & $-$7.936$^{***}$ \\ 
-  & p = 0.004 & p = 0.002 & p = 0.004 & p = 0.001 \\ 
+ Mean.Sex & $-$2.654$^{***}$ & $-$2.759$^{***}$ & $-$2.827$^{***}$ & $-$8.240$^{***}$ \\ 
+  & p = 0.002 & p = 0.001 & p = 0.003 & p = 0.0003 \\ 
   & & & & \\ 
  Mean.Sport.Participation & $-$0.001$^{***}$ & $-$0.001$^{**}$ & $-$0.001$^{*}$ & $-$0.002$^{**}$ \\ 
-  & p = 0.006 & p = 0.045 & p = 0.082 & p = 0.014 \\ 
+  & p = 0.006 & p = 0.047 & p = 0.096 & p = 0.015 \\ 
   & & & & \\ 
- Mean.Event.Participation & $-$0.003$^{**}$ & $-$0.004$^{***}$ & $-$0.002$^{**}$ & $-$0.009$^{***}$ \\ 
-  & p = 0.016 & p = 0.002 & p = 0.049 & p = 0.005 \\ 
+ Mean.Event.Participation & $-$0.002 & $-$0.003$^{**}$ & $-$0.002 & $-$0.006$^{**}$ \\ 
+  & p = 0.117 & p = 0.015 & p = 0.130 & p = 0.037 \\ 
   & & & & \\ 
- Bronze.Last.Olympics & 0.170$^{***}$ & 0.115$^{***}$ & 0.009 & 0.294$^{***}$ \\ 
-  & p = 0.00005 & p = 0.005 & p = 0.839 & p = 0.010 \\ 
+ Bronze.Last.Olympics & 0.182$^{***}$ & 0.127$^{***}$ & 0.018 & 0.328$^{***}$ \\ 
+  & p = 0.00001 & p = 0.002 & p = 0.693 & p = 0.003 \\ 
   & & & & \\ 
- Silver.Last.Olympics & $-$0.003 & 0.015 & 0.006 & 0.018 \\ 
-  & p = 0.957 & p = 0.749 & p = 0.907 & p = 0.885 \\ 
+ Silver.Last.Olympics & $-$0.015 & 0.003 & $-$0.001 & $-$0.013 \\ 
+  & p = 0.739 & p = 0.941 & p = 0.988 & p = 0.920 \\ 
   & & & & \\ 
- Gold.Last.Olympics & 0.262$^{***}$ & 0.353$^{***}$ & 0.621$^{***}$ & 1.235$^{***}$ \\ 
+ Gold.Last.Olympics & 0.277$^{***}$ & 0.365$^{***}$ & 0.627$^{***}$ & 1.270$^{***}$ \\ 
   & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
   & & & & \\ 
- Constant & 4.131$^{***}$ & 4.158$^{***}$ & 3.909$^{***}$ & 12.198$^{***}$ \\ 
-  & p = 0.00004 & p = 0.00003 & p = 0.001 & p = 0.00001 \\ 
+ Events:Is.host & $-$0.112$^{***}$ & $-$0.095$^{***}$ & $-$0.046$^{***}$ & $-$0.252$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.004 & p = 0.000 \\ 
+  & & & & \\ 
+ Is.host:Mean.Event.Participation & 0.003 & $-$0.001 & $-$0.009 & $-$0.006 \\ 
+  & p = 0.599 & p = 0.862 & p = 0.246 & p = 0.718 \\ 
   & & & & \\ 
 \hline \\[-1.8ex] 
 Observations & 1,045 & 1,045 & 1,045 & 1,045 \\ 
-R$^{2}$ & 0.740 & 0.760 & 0.773 & 0.803 \\ 
-Adjusted R$^{2}$ & 0.738 & 0.758 & 0.771 & 0.801 \\ 
-Residual Std. Error (df = 1034) & 3.673 & 3.627 & 4.139 & 10.005 \\ 
-F Statistic (df = 10; 1034) & 294.449$^{***}$ & 327.359$^{***}$ & 353.092$^{***}$ & 421.681$^{***}$ \\ 
+R$^{2}$ & 0.756 & 0.772 & 0.776 & 0.812 \\ 
+Adjusted R$^{2}$ & 0.754 & 0.769 & 0.774 & 0.810 \\ 
+Akaike Inf. Crit. & 5,634.121 & 5,623.582 & 5,939.055 & 7,747.321 \\ 
+Bayesian Inf. Crit. & 5,703.446 & 5,692.907 & 6,008.380 & 7,816.646 \\ 
+Residual Std. Error (df = 1032) & 3.560 & 3.542 & 4.119 & 9.784 \\ 
+F Statistic (df = 12; 1032) & 266.964$^{***}$ & 290.373$^{***}$ & 298.126$^{***}$ & 371.542$^{***}$ \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{longtable} 
 
 We see that nearly all of our predictors have very small p-values, meaning nearly all of them are significant, including the metrics related to sports and events. The only exception is \texttt{Silver.Last.Olympics}, which shows the opposite effect---its p-values are very large, indicating that the number of silver medals a country has is. When analyzing our correlations, we focus only the model with the total number of medals as the dependent variable to reduce redundancy, as our analyses were identical for all models. 
+
+\subsubsection{Backwards Model Selection}
+
+This model has a great deal of unnecessary predictors, as shown by the low p-values. We will use the backwards selection algorithm provided by the R package \texttt{MASS} to select smaller models. After backwards selection, we have the following information of our models:
+
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: Mon, Jan 27, 2025 - 6:49:47 PM
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lcccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & Bronze & Silver & Gold & Total \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ Athletes & 0.034$^{***}$ & 0.042$^{***}$ & 0.039$^{***}$ & 0.114$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
+  & & & & \\ 
+ Sports & $-$0.152$^{***}$ & $-$0.122$^{***}$ & $-$0.115$^{***}$ & $-$0.388$^{***}$ \\ 
+  & p = 0.00002 & p = 0.001 & p = 0.005 & p = 0.0001 \\ 
+  & & & & \\ 
+ Events & $-$0.004 & $-$0.034$^{***}$ & $-$0.036$^{***}$ & $-$0.074$^{***}$ \\ 
+  & p = 0.646 & p = 0.00002 & p = 0.00003 & p = 0.0005 \\ 
+  & & & & \\ 
+ Is.host & 21.661$^{***}$ & 21.278$^{***}$ & 16.811$^{***}$ & 59.787$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.00000 & p = 0.000 \\ 
+  & & & & \\ 
+ Mean.Sex & $-$2.630$^{***}$ & $-$2.766$^{***}$ & $-$2.866$^{***}$ & $-$8.264$^{***}$ \\ 
+  & p = 0.002 & p = 0.001 & p = 0.003 & p = 0.0003 \\ 
+  & & & & \\ 
+ Mean.Sport.Participation & $-$0.001$^{***}$ & $-$0.001$^{**}$ & $-$0.001$^{*}$ & $-$0.002$^{**}$ \\ 
+  & p = 0.006 & p = 0.045 & p = 0.082 & p = 0.014 \\ 
+  & & & & \\ 
+ Mean.Event.Participation & $-$0.002 & $-$0.003$^{**}$ & $-$0.002 & $-$0.006$^{**}$ \\ 
+  & p = 0.126 & p = 0.014 & p = 0.111 & p = 0.034 \\ 
+  & & & & \\ 
+ Bronze.Last.Olympics & 0.177$^{***}$ & 0.128$^{***}$ &  & 0.321$^{***}$ \\ 
+  & p = 0.00000 & p = 0.0003 &  & p = 0.002 \\ 
+  & & & & \\ 
+ Gold.Last.Olympics & 0.270$^{***}$ & 0.367$^{***}$ & 0.638$^{***}$ & 1.265$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
+  & & & & \\ 
+ Events:Is.host & $-$0.110$^{***}$ & $-$0.095$^{***}$ & $-$0.050$^{***}$ & $-$0.255$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.002 & p = 0.000 \\ 
+  & & & & \\ 
+ Constant & 3.803$^{***}$ & 3.889$^{***}$ & 3.770$^{***}$ & 11.458$^{***}$ \\ 
+  & p = 0.0001 & p = 0.0001 & p = 0.001 & p = 0.00002 \\ 
+  & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 1,045 & 1,045 & 1,045 & 1,045 \\ 
+R$^{2}$ & 0.756 & 0.771 & 0.776 & 0.812 \\ 
+Adjusted R$^{2}$ & 0.754 & 0.769 & 0.774 & 0.810 \\ 
+Akaike Inf. Crit. & 5,630.521 & 5,619.619 & 5,934.577 & 7,743.463 \\ 
+Bayesian Inf. Crit. & 5,689.943 & 5,679.041 & 5,989.046 & 7,802.884 \\ 
+% Residual Std. Error & 3.557 (df = 1034) & 3.538 (df = 1034) & 4.116 (df = 1035) & 9.775 (df = 1034) \\ 
+% F Statistic & 320.815$^{***}$ (df = 10; 1034) & 349.106$^{***}$ (df = 10; 1034) & 397.909$^{***}$ (df = 9; 1035) & 446.641$^{***}$ (df = 10; 1034) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
+
+We see that the predictors \texttt{Silver.Last.Olympics} and \\ \texttt{Is.host:Mean.Event.Participation}, the interaction term, were dropped from every model, and \texttt{Bronze.Last.Olympics} was dropped specifically from the Gold model. We will use these models in all predictions and in the following sections.
 
 \subsubsection{Multicollinearity}\label{ssec:vif}
 
@@ -377,7 +452,7 @@ Using a level $\alpha=0.05$ for this test, we see that each predictor has consta
 
 \subsubsection{Influential points}
 
-According to DFFITS, we found 12 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/DFFITS.csv}{\texttt{DFFITS.csv}}); according to Cook's Distance, we found 4 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/cooks_distance.csv}{\texttt{cooks\_distance.csv}}); finally, according to DFBETAS, we found 20 influential points.
+According to DFFITS, we found 16 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/DFFITS.csv}{\texttt{DFFITS.csv}}); according to Cook's Distance, we found 4 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/cooks_distance.csv}{\texttt{cooks\_distance.csv}}); finally, according to DFBETAS, we found 20 influential points.
 
 \section{Results Integration}\label{sec:results-integration}
 
@@ -396,14 +471,14 @@ The projected medal table for the 2028 Olympics from both models is given in the
 \cline{2-5} \cline{6-9}
 & Gold & Silver & Bronze & Total & Bronze & Silver & Gold & Total \\
 \hline\hline
-United States & 0 & 0 & 0 & 144 & 34 & 38 & 35 & 117 \\
-China         & 0 & 0 & 0 & 8   & 22 & 23 & 29 & 74 \\
-France        & 0 & 0 & 0 & 42  & 23 & 22 & 21 & 66 \\
-Italy         & 0 & 0 & 0 & 28  & 14 & 12 & 12 & 38 \\
-Germany       & 0 & 0 & 0 & 23  & 14 & 14 & 14 & 43 \\ 
+United States & 73 & 38 & 33 & 144 & 34 & 38 & 35 & 117 \\
+China         & 3 & 2 & 2 & 8   & 22 & 23 & 29 & 74 \\
+France        & 29 & 10 & 21 & 42  & 23 & 22 & 21 & 66 \\
+Italy         & 26 & 7 & 4 & 28  & 14 & 12 & 12 & 38 \\
+Germany       & 15 & 6 & 6 & 23  & 14 & 14 & 14 & 43 \\ 
 $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\ 
-Egypt         & 0 & 0 & 0 & 2   & 2 & 1 & 1 & 5 \\
-Tajikistan    & 0 & 0 & 0 & 0   & 1 & 1 & 0 & 3 \\
+Egypt         & 1 & 0 & 1 & 2   & 2 & 1 & 1 & 5 \\
+Tajikistan    & 0 & 0 & 0 & 0   & 1 & 2 & 0 & 3 \\
 Qatar         & 0 & 0 & 0 & 0   & 0 & 0 & 0 & 0 \\
 Botswana      & 0 & 0 & 0 & 0   & 0 & 0 & 0 & 0 \\ 
 \hline
@@ -439,7 +514,7 @@ In most previous competitions, most countries did not win any medals, and only v
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{myplot} % 直接写图片名字，不需要后缀
-  \caption{Distributions of Total Medals Earned of These Two Method }
+  \caption{Distributions of Total Medals Earned from both methods}
   \label{exampleId}
 \end{figure}
 Thus, the criteria to determine which result is more likely to be correct is to see which results about the total medals gained by each country match the Gamma distribution.\\
@@ -551,30 +626,90 @@ Based on the composite weights, we calculate the weighted average of the medaas 
 \begin{equation}\label{eq:1}
 \text{Medals earned} = w_\text{ANN}R_\text{ANN} + w_\text{MLR}R_\text{MLR}.
 \end{equation}
- $R_{ANN}$ is the total medals earned by a certain country calculated by the artificial neural network, and $R_{MLR}$ is the total medals earned by the same country calculated by the multiple linear regression.\\
-We use this to derive the final medals earned for each country as show in the table below:
+$R_\text{ANN}$ is the total medals earned by a certain country calculated by the artificial neural network, and $R_\text{MLR}$ is the total medals earned by the same country calculated by the multiple linear regression. We use this to derive the final medals earned for each country as show in the next section.
+
+\section{Projections}
+
 \begin{table}[H]
 \centering 
 \label{c}
-\caption{Medals Earned from Each Country in the 2028 Olympics}
+\caption{Projected Medals to be Earned for Each Country in the 2028 Olympics}
 \vspace{5pt}
 \begin{tabular}{lcccc}
 \hline
 \textbf{Country} & \textbf{Bronze} & \textbf{Silver} & \textbf{Gold} & \textbf{Total}\\
 \hline\hline
-United States & 0 & 0 & 0 & 131 \\
-China         & 0 & 0 & 0 & 40 \\
-France        & 0 & 0 & 0 & 53 \\
-Italy         & 0 & 0 & 0 & 33 \\
-German        & 0 & 0 & 0 & 33 \\
+United States & 33 & 38 & 60 & 131 \\
+China         & 13 & 12 & 15 & 40 \\
+France        & 22 & 7 & 24 & 53 \\
+Italy         & 5 & 9 & 19 & 33 \\
+German        & 9 & 10 & 14 & 33 \\
 $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-Egypt         & 0 & 0 & 0 & 3 \\
-Tajikistan    & 0 & 0 & 0 & 1 \\
+Egypt         & 1 & 1 & 1 & 3 \\
+Tajikistan    & 0 & 1 & 0 & 1 \\
 Qatar         & 0 & 0 & 0 & 0 \\
 Botswana      & 0 & 0 & 0 & 0 \\
 \hline
 \end{tabular}
 \end{table}
+
+\subsection{Countries that are Projected to Improve}
+To determine which country needs to work hard to improve, we established a metric, performance score, to measure a country's performance in the Olympics. We assigned unique performance scores to gold, silver, and bronze medals. The performance score for a gold medal is 5 points, for the silver medal is 3 points, and for the bronze medal is 2 points. We find each country's total score by adding the score from these three kinds of medals together to see the final performance score of each country in this Olympic Games.
+We take the data in the medal table of each country in 2024 to calculate their performance score in the 2024 Olympic competition. Meanwhile, we repeat this calculation again based on the predicted data about each country's number of medals gained to get their performance score in the 2028 Olympic Games. 
+
+A decrease in a country's performance score indicates that the country needs to put in effort to improve its current sports situation. Conversely, an increase in the performance score suggests that the country's current sports condition will likely lead to better results in the next Olympic Games.
+
+According to the comparison of performance score, the following countries are projected to improve:
+
+\begin{longtable}{@{\extracolsep{5pt}} ccccccc} 
+  \caption{Countries that are Projected to Improve} 
+  \label{} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Rank & Country & Bronze & Silver & Gold & Score & Total \\ 
+\hline \\[-1.8ex] 
+1 & France & $23$ & $22$ & $21$ & $66$ & $217$ \\ 
+2 & Australia & $18$ & $17$ & $19$ & $54$ & $182$ \\ 
+3 & Japan & $17$ & $17$ & $19$ & $53$ & $180$ \\ 
+4 & Germany & $14$ & $14$ & $14$ & $43$ & $140$ \\ 
+5 & Ireland & $14$ & $14$ & $12$ & $40$ & $130$ \\ 
+6 & Netherlands & $12$ & $12$ & $13$ & $37$ & $125$ \\ 
+7 & Spain & $11$ & $11$ & $10$ & $31$ & $105$ \\ 
+8 & Canada & $10$ & $9$ & $9$ & $28$ & $92$ \\ 
+9 & Poland & $5$ & $4$ & $3$ & $12$ & $37$ \\ 
+10 & Belgium & $4$ & $4$ & $3$ & $11$ & $35$ \\ 
+11 & Denmark & $4$ & $3$ & $3$ & $9$ & $32$ \\ 
+12 & Jamaica & $3$ & $3$ & $2$ & $8$ & $25$ \\ 
+13 & Serbia & $2$ & $2$ & $3$ & $7$ & $25$ \\ 
+14 & Kosovo & $2$ & $2$ & $2$ & $7$ & $20$ \\ 
+15 & India & $3$ & $2$ & $1$ & $7$ & $17$ \\ 
+16 & Chinese Taipei & $3$ & $2$ & $2$ & $7$ & $22$ \\ 
+17 & North Korea & $3$ & $2$ & $2$ & $6$ & $22$ \\ 
+18 & Ethiopia & $2$ & $2$ & $2$ & $6$ & $20$ \\ 
+19 & Hong Kong & $2$ & $2$ & $2$ & $5$ & $20$ \\ 
+20 & Bahrain & $1$ & $2$ & $2$ & $5$ & $18$ \\ 
+21 & Pakistan & $2$ & $2$ & $2$ & $5$ & $20$ \\ 
+22 & Ivory Coast & $2$ & $2$ & $2$ & $5$ & $20$ \\ 
+23 & Indonesia & $2$ & $2$ & $2$ & $5$ & $20$ \\ 
+24 & Egypt & $2$ & $1$ & $1$ & $5$ & $12$ \\ 
+25 & Philippines & $2$ & $1$ & $2$ & $5$ & $17$ \\ 
+26 & Kyrgyzstan & $2$ & $2$ & $1$ & $4$ & $15$ \\ 
+27 & Malaysia & $2$ & $1$ & $1$ & $4$ & $12$ \\ 
+28 & Slovenia & $2$ & $1$ & $2$ & $4$ & $17$ \\ 
+29 & Albania & $1$ & $1$ & $1$ & $4$ & $10$ \\ 
+30 & Uganda & $1$ & $1$ & $1$ & $4$ & $10$ \\ 
+31 & Singapore & $1$ & $1$ & $1$ & $4$ & $10$ \\ 
+32 & Dominica & $1$ & $1$ & $1$ & $3$ & $10$ \\ 
+33 & Cabo Verde & $1$ & $1$ & $1$ & $3$ & $10$ \\ 
+34 & Moldova & $2$ & $1$ & $1$ & $3$ & $12$ \\ 
+35 & Guatemala & $1$ & $1$ & $1$ & $3$ & $10$ \\ 
+36 & Panama & $1$ & $1$ & $1$ & $3$ & $10$ \\ 
+37 & Mongolia & $1$ & $1$ & $1$ & $3$ & $10$ \\ 
+38 & Saint Lucia & $1$ & $1$ & $1$ & $3$ & $10$ \\ 
+39 & Peru & $1$ & $1$ & $1$ & $2$ & $10$ \\ 
+40 & Slovakia & $1$ & $1$ & $0$ & $1$ & $5$ \\ 
+\hline \\[-1.8ex] 
+\end{longtable} 
 
 \subsection{New Medalists}
 
@@ -584,10 +719,12 @@ There were no new medalists.
 
 \subsection{Relationship between Events and Medals}
 
+In Section~\ref{sec:mlr}, we found that the number of events a country participated in and the mean \enquote{popularity} of the events they chose to participate in (\texttt{Mean.Event.Participation}) were both relevant to all of the models of medal counts.
+
 \subsection{``Great Coach`` Effect}
 
 \section{Conclusions}
-In this model, we construct two models to predict the total score of each country. After weighing the results of these two models, we obtain an integrated result, as shown in the table.10, the United States will win the most medals, 131., and then, the following countries, France, China, Itlay, and Germany, will win 53, 40, 33, and 33 medals. If we count the number of gold medal gained by each country, then the result will change to 
+In this model, we construct two models to predict the total score of each country. After weighing the results of these two models, we obtain an integrated result, as shown in the table.10, the United States will win the most medals, 131. then, the following countries, France, China, Italy, and Germany, will win 53, 40, 33, and 33 medals. If we count the number of gold medals gained by each country, then the result will change to the United States winning the most gold medals, 60, and then the following countries, France, China, Italy, and Germany, will win 15, 24, 19,14.
 
 \section{Evaluation of the Model}
 Certain features of the models used in this paper work better for different questions one may have regarding the 2028 Olympics medal distribution. In truth, a combination of the ANN and MLR is useful for a more rounded overall model. While certain predictions are consistent across both models, there are crucial differences which make one better than the other in certain aspects. For example, the ANN model predicts that no new countries will win a medal in the 2028 Olympics, and it is quite easy to understand why. The model has learned that over the span of 128 years and 32 Summer Olympic Events, a particular country has not won once. On the basis of that knowledge, there is no reason why it should suggest that suddenly a country may win a medal. In this case, the linear regression model reigns supreme, as it operates on an entirely different basis, as does not fall short to the situation described above. Conversely, finding relationships of specific variables, rather than entire datasets, the MLR model is able to more accurately predict whether a country will win its first medal based on its attributes. Another consequence of the ANN learning entire data sets is a possible erroneous prediction of certain team medals. For instance, China has taken part in merely 11 Olympics, as opposed to the United States which took part in almost 30. This results in the ANN assigning China 0 medals for all Olympics it had not participated in, reinforcing a notion that China's recent successes a merely a fluke, not replicable in future events. Again, in such situations the MLR has an advantage over the ANN. The ANN model works better for conclusions requiring a view on the whole set of data, such as the influence of \textit{Host Advantage}. The MLR tries to account for this metric, but finds very little correlation, since it bases its predictions on only 1 Summer Olympic prior. This may explain the reason for a bigger discrepancy for the number of medals won by the United States than for any other country - perhaps the ANN found support for Host Advantage playing a role, and predicts the United States, as a host of the 2028 Los Angeles Olympics, will earn more medals. Many such differences exist between the two models, which is why we elected to construct both in harmony with each other. Their collective predictions should be a much more trust-worthy metric, as compared to both models in solitude.
@@ -596,7 +733,7 @@ Certain features of the models used in this paper work better for different ques
 
 \subsection{Strengths}
 \begin{itemize}
-\item{}
+\item{We weigh multiple approaches to get the final result about how many medals each country will gain. Thus, the results will be more accurate than those from a single method.}
 \end{itemize}
 
 \subsection{Weaknesses}
@@ -604,9 +741,6 @@ Certain features of the models used in this paper work better for different ques
 \begin{itemize}
 \item {Gamma distribution might not be able to exactly describe the distribution of the medals earned of each country}
 \item {The ANN model takes into account all historical data, and sometimes predicts countries like the Soviet Union, Yugoslavia or Czechoslovakia as a possible winner. While the model ranks these countries very low, it ranks them nonetheless, meaning it may in theory predict that a non-existent country will win a medal, which is impossible.}
-\item 
-
-\item 
 
 \end{itemize}
 

@@ -4,11 +4,20 @@ processed.data <- read.csv("./processed_data.csv")
 medal.colnames <- c("Bronze", "Silver", "Gold", "Total")
 drop.cols <- c(medal.colnames, "Rank", "Year", "NOC")
 
-total.mdl  <- lm(Total  ~ ., data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Total"))])
-gold.mdl   <- lm(Gold   ~ ., data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Gold"))])
-silver.mdl <- lm(Silver ~ ., data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Silver"))])
-bronze.mdl <- lm(Bronze ~ ., data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Bronze"))])
+bronze.mdl <- lm(Bronze ~ . + Is.host*Events + Is.host*Mean.Event.Participation, data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Bronze"))])
+silver.mdl <- lm(Silver ~ . + Is.host*Events + Is.host*Mean.Event.Participation, data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Silver"))])
+gold.mdl   <- lm(Gold   ~ . + Is.host*Events + Is.host*Mean.Event.Participation, data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Gold"))])
+total.mdl  <- lm(Total  ~ . + Is.host*Events + Is.host*Mean.Event.Participation, data = processed.data[, !(names(processed.data) %in% setdiff(drop.cols, "Total"))])
 
+# Now do backwards selection
+library(MASS)
+
+bronze.red <- step(bronze.mdl)
+silver.red <- step(silver.mdl)
+gold.red   <- step(gold.mdl)
+total.red  <- step(total.mdl)
+
+## Prediction ##
 year.location <- "Los Angeles, United States"
 prev.year <- 2024
 pred.medal.table <- data.frame()
@@ -63,6 +72,6 @@ pred.medal.table.rounded.pos[numeric.cols] <- lapply(pred.medal.table.rounded.po
 
 pred.medal.table.rounded[pred.medal.table.rounded$Bronze + pred.medal.table.rounded$Silver + pred.medal.table.rounded$Gold != pred.medal.table.rounded$Total, ]
 
-write.csv(pred.medal.table, "./predicitons/predicted_medal_table.csv", row.names = FALSE)
+write.csv(pred.medal.table, "./predictions/predicted_medal_table.csv", row.names = FALSE)
 write.csv(pred.medal.table.rounded, "./predictions/rounded_predicted_medal_table.csv", row.names = FALSE)
 write.csv(pred.medal.table.rounded.pos, "./predictions/pos_rounded_predicted_medal_table.csv", row.names = FALSE)
