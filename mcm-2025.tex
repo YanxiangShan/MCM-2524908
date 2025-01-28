@@ -72,9 +72,7 @@
 
 %\textbf{Follow us @COMAPMath on Twitter or COMAPCHINAOFFICIAL on Weibo for the
 %most up to date contest information.}
-\begin{Abstract}
 In this paper, we construct several models to predict the success of the 2028 Los Angeles Olympic Games. Our dataset contains the total scores for nearly 1000 countries and regions from 1896 to 2024. We built an artificial neural network model and a multiple linear regression model to predict the results of the 2028 Olympic Games. Then, we used the entropy-weighted method to integrate these two different outcomes to gain the synthetic results. We also find the relationship between the events and the number of medals gained and compare the performance of each country in the 2024 Olympic Games and their performance in the 2028 Olympic Games to determine which country will perform better and which country will perform worse.
-\end{Abstract}
 \begin{keywords}
 Multiple Linear Regression; Neural Network; Entropy-weighted Method
 \end{keywords}
@@ -128,7 +126,7 @@ The final layer was standardized using the Softmax function, again as is custom 
 \begin{equation}\label{eq:softmax}
     \text{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{n} e^{z_j}}
 \end{equation}
-The ANN also used three additional functions to calculate its effectiveness. The optimizer Adam (Adaptive Moment Estimation) function was used to minimize the loss function dynamically, by changing the weights and biases of neurons and connections. It ensures the neural network converges to a good solution efficiently. It is defined mathematically below:
+The ANN also used three additional functions to calculate its effectiveness. The optimizer Adam (Adaptive Moment Estimation) function was used to minimize the loss dynamically by changing the weights and biases of neurons and connections. It ensures that the neural network converges to a reasonable solution efficiently. It is defined mathematically below:
 \begin{align}\label{eq:adam func}
     \begin{split}
     &\omega_{t+1}=\omega_t-\alpha m_t\\
@@ -358,101 +356,131 @@ We see that the predictors \texttt{Silver.Last.Olympics} and \\ \texttt{Is.host:
 
 \subsubsection{Multicollinearity}\label{ssec:vif}
 
-Measuring multicollinearity in each predictor is important to determine how independent their effects are on the full model. If a given predictor is multicollinear, it is common for it to have a small p-value in a MLR model, but a small p-value in a SLR model, or vice versa. We measure multicollinearity using Variance Inflation Factors (VIF). The functionality to calculate this is provided by the R package \texttt{cars}. The VIFs for each predictor from each model is given below. Note that We only show the VIF values for the model of total medals because the respective values for the predictors in the other models are nearly identical. See \href{https://github.com/YanxiangShan/MCM-2524908/blob/main/code/MLR/analysis/vifs.csv}{\texttt{vifs.csv}} for the full table with data for all models, or \href{https://github.com/YanxiangShan/MCM-2524908/blob/main/code/MLR/analysis/vifs.csv}{\texttt{vif\_diffs.csv}} for the difference between all VIFs and the VIFs from the Total column.
+Measuring multicollinearity in each predictor is important to determine how independent their effects are on the full model. If a given predictor exhibits multicollinear, it is common for it to have a small p-value in a MLR model, but a small p-value in a SLR model, or vice versa, thereby being inconsistent. We measure multicollinearity using Variance Inflation Factors (VIF). The functionality to calculate this is provided by the R package \texttt{cars}. The VIFs for each predictor from each model is given below. 
 
 % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
-% Date and time: Mon, Jan 27, 2025 - 3:58:41 PM
-\begin{longtable}{@{\extracolsep{5pt}} l|c} 
-  \caption{VIF values for each predictor in the total model} 
-  \label{tbl:vif} 
+% Date and time: Mon, Jan 27, 2025 - 7:09:43 PM
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}} lcccc} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
-Predictor & VIF \\ 
-\hline
-Athletes & $12.654$ \\ 
-Sports & $6.685$ \\ 
-Events & $14.315$ \\ 
-Is.host & $1.524$ \\ 
-Mean.Sex & $1.798$ \\ 
-Mean.Sport.Participation & $1.440$ \\ 
-Mean.Event.Participation & $1.329$ \\ 
-Bronze.Last.Olympics & $6.252$ \\ 
-Silver.Last.Olympics & $8.385$ \\ 
-Gold.Last.Olympics & $6.850$ \\ 
-\hline
-\end{longtable} 
+& \multicolumn{4}{c}{VIFs} \\ \cline{2-5}
+Predictor & Bronze & Silver & Gold & Total \\ 
+\hline \\[-1.8ex] 
+Athletes & $13.824$ & $13.824$ & $13.823$ & $13.824$ \\ 
+Sports & $6.685$ & $6.685$ & $6.671$ & $6.685$ \\ 
+Events & $15.513$ & $15.513$ & $15.054$ & $15.513$ \\ 
+Is.host & $13.095$ & $13.095$ & $13.081$ & $13.095$ \\ 
+Mean.Sex & $1.797$ & $1.797$ & $1.797$ & $1.797$ \\ 
+Mean.Sport.Participation & $1.439$ & $1.439$ & $1.437$ & $1.439$ \\ 
+Mean.Event.Participation & $1.346$ & $1.346$ & $1.346$ & $1.346$ \\ 
+Bronze.Last.Olympics & $4.909$ & $4.909$ & $1.844$ & $4.909$ \\ 
+Gold.Last.Olympics & $4.428$ & $4.428$ & $11.618$ & $4.428$ \\ 
+Events:Is.host & $11.628$ & $11.628$ & $13.823$ & $11.628$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table}
 
-We usually note that a predictor exhibits multicollinearity if its VIF value exceeds 10. Correspondingly, we see the values for \texttt{Athletes} and \texttt{Events} exceeded 10, indicating multicollinearity in these particular parameters, but none others. Testing these parameters individually gives the following results:
+We usually note that a predictor exhibits multicollinearity if its VIF value exceeds 10. Correspondingly, we see the value for \texttt{Athletes} exceedes 10, indicating multicollinearity in this predictor. We do see multicollinearity in \texttt{Events} and \texttt{Is.host}, but these are directly correlated to \texttt{Events:Is.host}, so this is expected. Further, we can inspect the effects of these predictors on their own with each model:
 
 % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
-% Date and time: Mon, Jan 27, 2025 - 2:09:47 AM
-\begin{longtable}{@{\extracolsep{5pt}}lcc} 
-    \caption{}
-    \label{}
+% Date and time: Mon, Jan 27, 2025 - 7:31:41 PM
+\begin{longtable}{@{\extracolsep{5pt}}lcccc} 
+  \caption{SLR on Athletes} 
+  \label{} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
- & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
-\cline{2-3} 
-\\[-1.8ex] & \multicolumn{2}{c}{Total} \\ 
-\\[-1.8ex] & (1) & (2)\\ 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & Bronze & Silver & Gold & Total \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) \\ 
 \hline \\[-1.8ex] 
- Sports & 1.390$^{***}$ &  \\ 
-  & p = 0.000 &  \\ 
-  & & \\ 
- Events &  & 0.259$^{***}$ \\ 
-  &  & p = 0.000 \\ 
-  & & \\ 
- Constant & $-$6.570$^{***}$ & $-$4.901$^{***}$ \\ 
-  & p = 0.000 & p = 0.000 \\ 
-  & & \\ 
+ Athletes & 0.044$^{***}$ & 0.044$^{***}$ & 0.049$^{***}$ & 0.014$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
+  & & & & \\ 
+ Constant & $-$0.689$^{***}$ & $-$1.077$^{***}$ & $-$1.642$^{***}$ & $-$3.408$^{***}$\\ 
+  & p = 0.00002 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
+  & & & & \\ 
 \hline \\[-1.8ex] 
-Observations & 1,419 & 1,419 \\ 
-R$^{2}$ & 0.270 & 0.452 \\ 
-Adjusted R$^{2}$ & 0.270 & 0.452 \\ 
-Residual Std. Error (df = 1417) & 18.448 & 15.983 \\ 
-F Statistic (df = 1; 1417) & 525.181$^{***}$ & 1,170.515$^{***}$ \\ 
+Observations & 1,419 & 1,419 & 1,419 & 1,419 \\ 
+R$^{2}$ & 0.602 & 0.563 & 0.500 & 0.5879 \\ 
+Adjusted R$^{2}$ & 0.602 & 0.563 & 0.499 & 0.5876 \\ 
+Residual Std. Error (df = 1417) & 4.306 & 4.678 & 5.956 & 13.87 \\ 
+F Statistic (df = 1; 1417) & 2,145.070$^{***}$ & 1,826.512$^{***}$ & 1,414.241$^{***}$ & 2,021.236$^{***}$ \\ 
 \hline 
 \hline \\[-1.8ex] 
-\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{longtable} 
+
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: Mon, Jan 27, 2025 - 7:22:16 PM
+\begin{longtable}{@{\extracolsep{5pt}}lcccc} 
+  \caption{Isolated MLR on Events, Is.host, and Interaction Term}
+  \label{} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & Bronze & Silver & Gold & Total \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ Events & 0.084$^{***}$ & 0.077$^{***}$ & 0.084$^{***}$ & 0.244$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
+  & & & & \\ 
+ Is.host & 27.476$^{***}$ & 28.005$^{***}$ & 20.255$^{***}$ & 75.736$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
+  & & & & \\ 
+ Events:Is.host & $-$0.124$^{***}$ & $-$0.103$^{***}$ & $-$0.043$^{**}$ & $-$0.270$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.031 & p = 0.00000 \\ 
+  & & & & \\ 
+ Constant & $-$1.367$^{***}$ & $-$1.392$^{***}$ & $-$1.839$^{***}$ & $-$4.598$^{***}$ \\ 
+  & p = 0.000 & p = 0.000 & p = 0.000 & p = 0.000 \\ 
+  & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 1,419 & 1,419 & 1,419 & 1,419 \\ 
+R$^{2}$ & 0.537 & 0.485 & 0.421 & 0.504 \\ 
+Adjusted R$^{2}$ & 0.536 & 0.484 & 0.420 & 0.503 \\ 
+Residual Std. Error (df = 1415) & 4.649 & 5.083 & 6.409 & 15.214 \\ 
+F Statistic (df = 3; 1415) & 547.086$^{***}$ & 444.323$^{***}$ & 343.331$^{***}$ & 480.140$^{***}$ \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{longtable} 
 
 Thus, we see that with respect to p-values, although these predictors exhibit multicollinearity, they are relevant to their models regardless of the presence of all other predictors. 
-
-% This is further supported by running a backwards selection algorithm on the full model, which elects only to eliminate the \texttt{Silver.Last.Olympics} predictor according to AIC, which possesses the highest p-value of all of the parameters by far (we do not use this model when making predictions in further sections).
 
 \subsubsection{Error Variance Constancy (Total model)}
 
 We use a Modified Levene Test (see Appendix~\ref{ap:mlt} for details) on each predictor in the Total model to detect non-constant error variance. This gave the following results:
 
 % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
-% Date and time: Mon, Jan 27, 2025 - 4:28:37 PM
+% Date and time: Mon, Jan 27, 2025 - 7:44:41 PM
 \begin{table}[!htbp] \centering 
   \caption{} 
-  \label{tbl:mlt} 
+  \label{} 
 \begin{tabular}{@{\extracolsep{5pt}} cc} 
 \\[-1.8ex]\hline 
-\hline \\[-1.8ex]
-Predictor & p-value \\ 
-\hline
-Athletes & $0.149$ \\ 
-Sports & $0.058$ \\ 
-Events & $0.046$ \\ 
-Is.host & $0.803$ \\ 
-Mean.Sex & $0.054$ \\ 
-Mean.Sport.Participation & $0.079$ \\ 
-Mean.Event.Participation & $0.039$ \\ 
+\hline \\[-1.8ex] 
+Athletes & $0.076$ \\ 
+Sports & $0.021$ \\ 
+Events & $0.019$ \\ 
+Is.host & $0.477$ \\ 
+Mean.Sex & $0.004$ \\ 
+Mean.Sport.Participation & $0.030$ \\ 
+Mean.Event.Participation & $0.041$ \\ 
 Bronze.Last.Olympics & $0$ \\ 
-Silver.Last.Olympics & $0$ \\ 
 Gold.Last.Olympics & $0$ \\ 
 \hline \\[-1.8ex] 
 \end{tabular} 
 \end{table} 
 
-Using a level $\alpha=0.05$ for this test, we see that each predictor has constant variance except for \texttt{Events}, \texttt{Mean.Event.Participation}, \texttt{Bronze.Last.Olympics}, \\ \texttt{Silver.Last.Olympics}, and \texttt{Gold.Last.Olympics}. 
+Using a level $\alpha=0.05$ for this test, we see that all predictors have non-constant error variance except for \texttt{Athletes} and \texttt{Is.host}. This must be addressed in any future models.
 
 \subsubsection{Influential points}
 
-According to DFFITS, we found 16 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/DFFITS.csv}{\texttt{DFFITS.csv}}); according to Cook's Distance, we found 4 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/cooks_distance.csv}{\texttt{cooks\_distance.csv}}); finally, according to DFBETAS, we found 20 influential points.
+According to DFFITS, we found 12 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/DFFITS.csv}{\texttt{DFFITS.csv}}); according to Cook's Distance, we found 4 influential points (see \href{https://github.com/YanxiangShan/MCM-2524908/tree/main/code/MLR/analysis/cooks_distance.csv}{\texttt{cooks\_distance.csv}}); finally, according to DFBETAS, we found 20 influential points.
 
 \section{Results Integration}\label{sec:results-integration}
 
@@ -659,14 +687,14 @@ We take the data in the medal table of each country in 2024 to calculate their p
 
 A decrease in a country's performance score indicates that the country needs to put in effort to improve its current sports situation. Conversely, an increase in the performance score suggests that the country's current sports condition will likely lead to better results in the next Olympic Games.
 
-According to the comparison of performance score, the following countries are projected to improve:
+According to the comparison of performance scores, the following countries on the list about their performance in the 2028 Olympic games are projected to improve:
 
 \begin{longtable}{@{\extracolsep{5pt}} ccccccc} 
-  \caption{Countries that are Projected to Improve} 
+  \caption{Countries that are Projected to Improve in the 2028 Olympic Game} 
   \label{} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
-Rank & Country & Bronze & Silver & Gold & Score & Total \\ 
+Rank & Country & Bronze & Silver & Gold & Total & Score\\ 
 \hline \\[-1.8ex] 
 1 & France & $23$ & $22$ & $21$ & $66$ & $217$ \\ 
 2 & Australia & $18$ & $17$ & $19$ & $54$ & $182$ \\ 
@@ -713,7 +741,7 @@ Rank & Country & Bronze & Silver & Gold & Score & Total \\
 
 \subsection{New Medalists}
 
-There were no new medalists.
+To find the new medalists, we analyzed the \texttt{medal\_counts.csv} file, to find countries which historically have not won even a single medal in any Summer Olympics. However, after summing up the total medal counts across all year from $1896$ to $2024$, it turns out no countries from the provided file have exactly 0 medals. Every nation in the \texttt{medal\_counts.csv} have earned at least 1 medal throughout all the given Summer Olympics, meaning no countries can possibly be new medalists. We are not sure, however, if this is by design of the data set - it is possible the competition organizer has purposfully ommited
 
 \section{Model Insights}
 
@@ -724,7 +752,7 @@ In Section~\ref{sec:mlr}, we found that the number of events a country participa
 \subsection{``Great Coach`` Effect}
 
 \section{Conclusions}
-In this model, we construct two models to predict the total score of each country. After weighing the results of these two models, we obtain an integrated result, as shown in the table.10, the United States will win the most medals, 131. then, the following countries, France, China, Italy, and Germany, will win 53, 40, 33, and 33 medals. If we count the number of gold medals gained by each country, then the result will change to the United States winning the most gold medals, 60, and then the following countries, France, China, Italy, and Germany, will win 15, 24, 19,14.
+In this model, we construct two models to predict the total score of each country. After weighing the results of these two models, we obtain an integrated result, as shown in the table.10, the United States will win the most medals, 131. then, the following countries, France, China, Italy, and Germany, will win 53, 40, 33, and 33 medals. If we count the number of gold medals gained by each country, then the result will change to the United States winning the most gold medals, 60, and then the following countries, France, China, Italy, and Germany, will win 15, 24, 19,14. We also found that many countries, such as France, Australia, and Japan, will perform worse in the 2028 Olympic games than they did in 2024.
 
 \section{Evaluation of the Model}
 Certain features of the models used in this paper work better for different questions one may have regarding the 2028 Olympics medal distribution. In truth, a combination of the ANN and MLR is useful for a more rounded overall model. While certain predictions are consistent across both models, there are crucial differences which make one better than the other in certain aspects. For example, the ANN model predicts that no new countries will win a medal in the 2028 Olympics, and it is quite easy to understand why. The model has learned that over the span of 128 years and 32 Summer Olympic Events, a particular country has not won once. On the basis of that knowledge, there is no reason why it should suggest that suddenly a country may win a medal. In this case, the linear regression model reigns supreme, as it operates on an entirely different basis, as does not fall short to the situation described above. Conversely, finding relationships of specific variables, rather than entire datasets, the MLR model is able to more accurately predict whether a country will win its first medal based on its attributes. Another consequence of the ANN learning entire data sets is a possible erroneous prediction of certain team medals. For instance, China has taken part in merely 11 Olympics, as opposed to the United States which took part in almost 30. This results in the ANN assigning China 0 medals for all Olympics it had not participated in, reinforcing a notion that China's recent successes a merely a fluke, not replicable in future events. Again, in such situations the MLR has an advantage over the ANN. The ANN model works better for conclusions requiring a view on the whole set of data, such as the influence of \textit{Host Advantage}. The MLR tries to account for this metric, but finds very little correlation, since it bases its predictions on only 1 Summer Olympic prior. This may explain the reason for a bigger discrepancy for the number of medals won by the United States than for any other country - perhaps the ANN found support for Host Advantage playing a role, and predicts the United States, as a host of the 2028 Los Angeles Olympics, will earn more medals. Many such differences exist between the two models, which is why we elected to construct both in harmony with each other. Their collective predictions should be a much more trust-worthy metric, as compared to both models in solitude.
@@ -766,11 +794,11 @@ is the pooled variance. We reject $H_0$ if $|t^*| > t\left( 1-\frac{\alpha}{2} ;
 
 \end{appendices}
 
-\AImatter
+% \AImatter
 
-\begin{ReportAiUse}{9}
+% \begin{ReportAiUse}{9}
 
-\end{ReportAiUse}
+% \end{ReportAiUse}
 
 \end{document}
 %% 

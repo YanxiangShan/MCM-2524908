@@ -46,50 +46,63 @@ dfbetas.ex <- processed.data.total[abs(dfbetas(total.red)) >= 1]
 length(dfbetas.ex)
 
 all.values <- data.frame()
+# for (model in c(bronze.red, silver.red, gold.red, total.red)) {
+  model <- total.red
+  preds <- names(coef(model))
+  preds <- setdiff(preds, "(Intercept)")
+  p.values <- rep(0, length(preds))
+  names(p.values) <- preds
+  
+  for (pred.name in preds) {
+    pred <- na.omit(unlist(processed.data[[pred.name]], use.names = FALSE))
+    med <- median(pred)
+    # Next, we calculate the values needed to get $s^2$ and $t^*$
+    res <- resid(total.red)
+    e1 <- na.omit(res[pred <= med])
+    e2 <- na.omit(res[pred > med])
+    d1 <- abs(e1 - median(e1))
+    d2 <- abs(e2 - median(e2))
+    s2 <- (sum((d1 - mean(d1))^2) + sum(d2 - mean(d2))^2) / (n-2)
+    s <- sqrt(s2)
+    n1 <- length(d1)
+    n2 <- length(d2)
+    t.star <- (mean(d1) - mean(d2)) / (s*sqrt(1/n1 + 1/n2))
+    # RR: |t*| > t(1 - alpha/2; n - 2)
+    # p-value, multiply by 2 for two-tailed
+    p.value <- 2 * pt(abs(t.star), n - 2, lower.tail = FALSE)
+    p.value
+    p.values[pred.name] <- p.value
+  }
+  
+library(stargazer)
+  
+stargazer(p.values, type='latex', flip = TRUE)
+  
+  all.values <- rbind(all.values, p.values)
 
-preds <- names(coef(total.red))
-preds <- setdiff(preds, "(Intercept)")
-p.values <- rep(0, length(preds))
-names(p.values) <- preds
+bronze.slr.athletes <- lm(Bronze ~ Athletes, data = processed.data)
+silver.slr.athletes <- lm(Silver ~ Athletes, data = processed.data)
+gold.slr.athletes   <- lm(Gold ~ Athletes, data = processed.data)
+total.slr.athletes  <- lm(Total ~ Athletes, data = processed.data)
 
-for (pred.name in preds) {
-  pred <- na.omit(unlist(processed.data[[pred.name]], use.names = FALSE))
-  med <- median(pred)
-  # Next, we calculate the values needed to get $s^2$ and $t^*$
-  res <- resid(total.red)
-  e1 <- na.omit(res[pred <= med])
-  e2 <- na.omit(res[pred > med])
-  d1 <- abs(e1 - median(e1))
-  d2 <- abs(e2 - median(e2))
-  s2 <- (sum((d1 - mean(d1))^2) + sum(d2 - mean(d2))^2) / (n-2)
-  s <- sqrt(s2)
-  n1 <- length(d1)
-  n2 <- length(d2)
-  t.star <- (mean(d1) - mean(d2)) / (s*sqrt(1/n1 + 1/n2))
-  # RR: |t*| > t(1 - alpha/2; n - 2)
-  # p-value, multiply by 2 for two-tailed
-  p.value <- 2 * pt(abs(t.star), n - 2, lower.tail = FALSE)
-  p.value
-  p.values[pred.name] <- p.value
-}
+stargazer(bronze.slr.athletes, silver.slr.athletes, gold.slr.athletes,
+          type='latex', report=('vc*p'))
 
-all.values <- rbind(all.values, p.values)
+bronze.slr.events <- lm(Bronze ~ Events + Is.host + Events*Is.host, data = processed.data)
+silver.slr.events <- lm(Silver ~ Events + Is.host + Events*Is.host, data = processed.data)
+gold.slr.events <- lm(Gold ~ Events + Is.host + Events*Is.host, data = processed.data)
+total.slr.events <- lm(Total ~ Events + Is.host + Events*Is.host, data = processed.data)
 
-total.slr.sports <- lm(Total ~ Sports, data = processed.data)
-total.slr.events <- lm(Total ~ Events, data = processed.data)
-
-stargazer(total.slr.sports, total.slr.events,
+stargazer(bronze.slr.events, silver.slr.events, gold.slr.events, total.slr.events,
           type='latex', report=('vc*p'))
 
 library(car)
 
-vif(total.red)
-
-step(total.red)
+vif(total.red, type = 'predictor')
 
 VIFs <- cbind(vif(bronze.red), vif(silver.red), vif(gold.red), vif(total.red))
 colnames(VIFs) <- medal.colnames
-stargazer(vif(total.red), type='latex', flip = TRUE)
+stargazer(VIFs, type='latex')
 
 VIF.diffs <- VIF - vif(total.red)
 write.csv(VIFs, "./analysis/vifs.csv", row.names = FALSE)
